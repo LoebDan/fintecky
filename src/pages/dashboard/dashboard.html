@@ -15,33 +15,31 @@
 
 <ion-content padding>
 
-    <!--<ion-expansion-panel hideToggle>
-      <mat-expansion-panel-header >
-        <mat-panel-title matTooltip="Budget">
-          <strong>Set budget for meal ⇅</strong>
-        </mat-panel-title>
-        <mat-panel-description>
-          <span></span>
-          <mat-icon matTooltip="Click to expand">find_in_page</mat-icon>
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <input type="number" class="form-control" id="budget" min="0" max="99" (change)='budgetProducts($index)>
-        &lt;!&ndash;button style="background-color: forestgreen" (click)='budgetProducts($index)' mat-button>GO!</button>
-    </ion-expansion-panel-->
-
   <ion-grid >
     <ion-row justify-content-center align-items-center style="height: 100%">
 
+      <ion-card padding class="card">
+        <ion-card-header style="color: #ffa100;">Set budget and search for meals: </ion-card-header>
+        <ion-card-content>
+          <p style="color: #C0C0C0"> My budget is R</p>
+          <ion-input type="number" style="background-color: #666666" class="form-control" min="0" max="99"
+                      (ionChange)='budgetProducts($event.value)'>
+          </ion-input>
+        </ion-card-content>
+      </ion-card>
+    </ion-row>
+
+    <ion-row justify-content-center align-items-center style="height: 100%">
       <!-- Current Specials -->
       <ion-card padding class="card">
-        <h1 class="headings"> Today's Specials </h1>
-        <ion-card *ngFor="let product of productsOnSpecial">
-          <ion-card-header>{{product.merchant}}</ion-card-header>
+        <h1 class="headings" style="color: #ffa100;"> Today's Specials </h1>
+        <ion-card *ngFor="let product of displayProducts">
+          <ion-card-header style="color: #ffa100;">{{product.merchant}}</ion-card-header>
           <ion-card-content>
-            <h2>{{product.name}}</h2>
+            <h2 style="color: #ffa100;">{{product.name}}</h2>
             <img style="max-height: 100px; max-width: 100px" src={{product.image}} alt={{product.desc}}>
-            <p>{{product.desc}} for R {{product.price}}. </p>
-            <button style="background-color: brown" (click)='placeOrder(product)' mat-button>ORDER</button>
+            <p style="color: #ffa100;">{{product.desc}} for R {{product.price}}. </p>
+            <button style="background-color: brown; color: white" (click)='placeOrder(product)' mat-button>ORDER</button>
           </ion-card-content>
         </ion-card>
       </ion-card>
