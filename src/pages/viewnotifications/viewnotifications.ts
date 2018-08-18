@@ -6,7 +6,6 @@ import { User } from '@firebase/auth-types';
 
 
 import { ProfileProvider} from "../../providers/profile/profile";
-import {DriversProvider} from "../../providers/drivers/drivers";
 
 /**
  * Generated class for the ViewnotificationsPage page.
@@ -48,7 +47,6 @@ export class ViewnotificationsPage {
     public NotificationsProvider: NotificationsProvider,
 
     public profileProvider: ProfileProvider,
-    public DriversProvider: DriversProvider,
   ) {
     // this.Notref = this.NotificationsProvider.GetNots();
     firebase.auth().onAuthStateChanged(user => {
@@ -60,9 +58,6 @@ export class ViewnotificationsPage {
         this.delay(3000);
       }
     });
-
-
-    this.SchedRidesRef = this.DriversProvider.fetchDriverSchedRides();
   }
 
   delay(ms: number) {

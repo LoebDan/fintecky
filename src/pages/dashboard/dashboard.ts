@@ -1,18 +1,9 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { TopupPage } from "../topup/topup";
-import {BalanceProvider} from "../../providers/balance/balance";
-import {WithdrawPage} from "../withdraw/withdraw";
-import { MapsProvider } from './../../providers/maps/maps';
-import { Geolocation } from '@ionic-native/geolocation';
-import { HubdataProvider } from "../../providers/hubdata/hubdata";
 import { RidesProvider} from "../../providers/rides/rides";
 import firebase from 'firebase';
-import { User } from '@firebase/auth-types';
-import {NotificationsProvider} from "../../providers/notifications/notifications";
 import {AuthProvider} from "../../providers/auth/auth";
-
-// declare var google: any;
 
 /**
  * Generated class for the DashboardPage page.
@@ -57,9 +48,6 @@ export class DashboardPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public geolocation: Geolocation,
-    public hubdataProvider: HubdataProvider,
-    public mapsProvider: MapsProvider,
     public RidesProvider: RidesProvider,
     public authProvider: AuthProvider,
 
@@ -80,26 +68,7 @@ export class DashboardPage {
         });
       }
     });
-
-
-    this.hubdataProvider.getHubData().on('value', async hubdataSnapshot => {
-      this.hubs =  hubdataSnapshot.val();
-      for(let x of Object.keys(this.hubs)){
-        var hublevel2 = this.hubs[x];
-        for(let y of Object.keys(hublevel2)){
-          this.hublist[y] = this.hubs[x][y];
-          var temp = y;
-          this.allhubsList.push(temp);
-          this.allhubs.push(this.hublist[y]);
-          this.locationn = {
-            latitude: await this.hublist[y].Lat,
-            longitude: await this.hublist[y].Long
-          };
-        }
-      }
-    });
   }
-
 
   async ionViewDidLoad(){
     this.location = {
@@ -145,8 +114,7 @@ export class DashboardPage {
   }
 
   async testcall(){
-    await this.hubdataProvider.getHubData();
-    await this.mapsProvider.init(this.location, this.mapElement, this.hublist);
+
   }
 
 //this allows for the information retrieved from the database to be displayed
@@ -161,10 +129,6 @@ export class DashboardPage {
 //Top up credits button taking user to top up page
   topUp(){
     this.navCtrl.push(TopupPage);
-  }
-
-  withdraw(){
-    this.navCtrl.push(WithdrawPage);
   }
 
   ReadM(NotOb){

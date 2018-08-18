@@ -7,9 +7,6 @@ import { AuthProvider } from '../../providers/auth/auth';
 import { FormBuilder, FormGroup } from "@angular/forms";
 import {PartyProvider} from "../../providers/party/party";
 import {ManageapartyPage} from "../manageaparty/manageaparty";
-import {GetpartyidProvider} from "../../providers/getpartyid/getpartyid";
-// import {StartapartyPage} from "../startaparty/startaparty";
-
 /**
  * Generated class for the JoinapartyPage page.
  *

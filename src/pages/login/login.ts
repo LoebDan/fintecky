@@ -10,8 +10,6 @@ import {
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EmailValidator } from '../../validators/email';
 import { AuthProvider } from '../../providers/auth/auth';
-import { HubdataProvider } from "../../providers/hubdata/hubdata";
-// import { HomePage } from '../home/home';
 
 /**
  * Generated class for the LoginPage page.
@@ -35,7 +33,6 @@ export class LoginPage {
     public navCtrl: NavController,
     public loadingCtrl: LoadingController,
     public alertCtrl: AlertController,
-    public hubdataProvider: HubdataProvider,
     public authProvider: AuthProvider,
     formBuilder: FormBuilder
   ) {

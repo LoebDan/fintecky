@@ -11,7 +11,6 @@ import {PartyProvider} from "../../providers/party/party";
 import firebase from 'firebase';
 import { User } from '@firebase/auth-types';
 import {DashboardPage} from "../dashboard/dashboard";
-import {PartyschedridePage} from "../partyschedride/partyschedride";
 
 /**
  * Generated class for the ManageapartyPage page.
@@ -119,9 +118,7 @@ export class ManageapartyPage {
   }
 
   getaride(){
-    //this.navCtrl.push(PassrideschedPage)
-    let myModal = this.modal.create(PartyschedridePage);
-    myModal.present();
+
   }
 
   async disbandparty(){

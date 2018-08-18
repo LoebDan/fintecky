@@ -1,9 +1,6 @@
 import { Component } from '@angular/core';
 import {AlertController, IonicPage, NavController, NavParams} from 'ionic-angular';
-// import { ToastController } from 'ionic-angular';
-// import {HubdataProvider} from "../../providers/hubdata/hubdata";
 import {BalanceProvider} from "../../providers/balance/balance";
-// import {AuthProvider} from "../../providers/auth/auth";
 import firebase from 'firebase';
 import {NotificationsProvider} from "../../providers/notifications/notifications";
 import {ProfileProvider} from "../../providers/profile/profile";

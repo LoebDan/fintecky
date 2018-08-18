@@ -8,7 +8,6 @@ import { TransactionsProvider } from "../../providers/transactions/transactions"
 import { BalanceProvider } from "../../providers/balance/balance";
 import { AuthProvider } from '../../providers/auth/auth';
 import {TopupPage} from "../topup/topup";
-import { WithdrawPage } from "../withdraw/withdraw";
 import firebase from 'firebase';
 
 
@@ -64,10 +63,6 @@ export class ViewbalanceandtransactionhistoryPage {
     this.navCtrl.push(TopupPage);
   }
 
-//Withdraw credits button taking user to Withdraw page
-  withdraw() {
-    this.navCtrl.push(WithdrawPage);
-  }
 }
 
 
