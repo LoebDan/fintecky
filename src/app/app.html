@@ -1,0 +1,129 @@
+<ion-split-pane>
+  <!-- logged in menu -->
+  <ion-menu overflow-scroll="false" id="loggedInMenu" *ngIf="showMenu" [content]="content">
+
+    <ion-header>
+      <ion-toolbar color="dark">
+        <ion-title><h4>Menu</h4></ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content id="menu-content" overflow-scroll="false">
+      <div #header>
+        <ion-row style="align-items:center;">
+          <ion-col col-3>
+            <img src="assets/imgs/emailicon.png" menuClose (click)="openPage('ViewnotificationsPage')"/>
+            <span class="icon-badge">{{notCount}}</span>
+          </ion-col>
+          <ion-col col-6>
+            <img class="user-avatar-round" [src]="chosenPicture || placeholder" onerror="this.src='assets/imgs/LogoDNBG.png'" menuClose (click)="openPage('ProfilePage')"/>
+          </ion-col>
+        </ion-row>
+        <ion-row style="justify-content: center;">
+
+          <h4 style="font-size: 15px;">Click on the CarPoGo Logo to see Your Profile Details.</h4>
+
+          <p style="padding-bottom: 30px"></p>
+        </ion-row>
+      </div>
+      <ion-list >
+
+        <ion-item class="menu-row" menuClose (click)="openPage('DashboardPage')">
+
+          <h2>
+            Dashboard
+          </h2>
+          <ion-icon color="gold" item-right name="list-box"></ion-icon>
+        </ion-item>
+
+        <ion-item class="menu-row" menuClose (click)="openPage('HomePage')">
+
+          <h2>
+            About Us
+          </h2>
+          <ion-icon color="gold" item-right name="list-box"></ion-icon>
+        </ion-item>
+
+
+
+        <ion-item class="menu-row" menuClose (click)="openPage('HubinfoPage')">
+
+          <h2>
+
+            Our Hubs
+
+          </h2>
+          <ion-icon color="gold" item-right name="pin"></ion-icon>
+        </ion-item>
+
+        <button ion-item detail-none class="menu-row" (click)="toggleDriver()">
+          <h2>Driver</h2>
+          <ion-icon color="gold" item-right [name]="isDriverShown ? 'arrow-dropdown' : 'arrow-dropright'"></ion-icon>
+        </button>
+        <ion-list *ngIf="isDriverShown">
+
+          <ion-item menuClose *ngFor="let p of driverpages" text-wrap class="drop" (click)="openPage(p.component)">
+
+
+            <h4>
+              {{p.title}}
+            </h4>
+            <ion-icon color="gold" item-right [name]=p.icon></ion-icon>
+          </ion-item>
+        </ion-list>
+
+        <button ion-item detail-none class="menu-row" (click)="togglePass()">
+          <h2>Passenger</h2>
+          <ion-icon color="gold" item-right [name]="isPassShown ? 'arrow-dropdown' : 'arrow-dropright'"></ion-icon>
+        </button>
+        <ion-list *ngIf="isPassShown">
+
+          <ion-item menuClose *ngFor="let p of passpages" text-wrap class="drop" (click)="openPage(p.component)">
+            <h4>
+              {{p.title}}
+            </h4>
+            <ion-icon color="gold" item-right [name]=p.icon></ion-icon>
+          </ion-item>
+        </ion-list>
+
+        <button ion-item detail-none class="menu-row" (click)="toggleParty()">
+          <h2>Party</h2>
+          <ion-icon color="gold" item-right [name]="isPartyShown ? 'arrow-dropdown' : 'arrow-dropright'"></ion-icon>
+        </button>
+        <ion-list *ngIf="isPartyShown">
+
+          <ion-item menuClose *ngFor="let p of partypages" text-wrap class="drop" (click)="openPage(p.component)">
+
+            <h4>
+              {{p.title}}
+            </h4>
+            <ion-icon color="gold" item-right [name]=p.icon></ion-icon>
+          </ion-item>
+        </ion-list>
+
+
+        <ion-item menuClose class="menu-row" (click)="openPage('ViewbalanceandtransactionhistoryPage')">
+
+          <h2>
+            Credits and Transactions
+          </h2>
+          <ion-icon color="gold" item-right name="card"></ion-icon>
+        </ion-item>
+
+        <ion-item class="menu-row" (click)="logOut()">
+          <h2>
+            Log-out
+          </h2>
+          <ion-icon color="gold" item-right name="log-out"></ion-icon>
+        </ion-item>
+      </ion-list>
+    </ion-content>
+
+  </ion-menu>
+
+
+
+  <!-- main navigation -->
+  <ion-nav [root]="rootPage" #content swipeBackEnabled="false" main name="app"></ion-nav>
+
+</ion-split-pane>

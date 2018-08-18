@@ -1,0 +1,135 @@
+<ion-header>
+  <ion-navbar>
+  <!--<ion-navbar [swipeBackEnabled]="false" color="primary">-->
+    <ion-title>Profile</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="logOut()">
+        <ion-icon name="log-out"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <h1>
+      Personal Information:
+    </h1>
+    <ion-item (click)="updateName()">
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6> Name: </ion-col>
+          <ion-col col-6 *ngIf="userProfile?.firstName || userProfile?.lastName">
+            {{userProfile?.firstName}} {{userProfile?.lastName}}
+          </ion-col>
+          <ion-col col-6 class="placeholder-profile" *ngIf="!userProfile?.firstName">
+            <span> Edit Here. </span>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+
+    <ion-item (click)="updateContactNo()">
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6> Phone Number: </ion-col>
+          <ion-col col-6 *ngIf="profile?.ContactNo">
+            {{profile?.ContactNo}}
+          </ion-col>
+          <ion-col col-6 class="placeholder-profile" *ngIf="!profile?.ContactNo">
+            <span> Tap here to edit. </span>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+
+    <ion-item>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6> ID Number: </ion-col>
+          <ion-col col-6 *ngIf="userProfile?.ID">
+            {{userProfile?.ID}}
+          </ion-col>
+          <ion-col col-6 class="placeholder-profile" *ngIf="!userProfile?.ID">
+            <span> Tap here to edit. </span>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+
+    <ion-item (click)="updateEmail()">
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6> Email: </ion-col>
+          <ion-col col-6 *ngIf="userProfile?.email">
+            {{userProfile?.email}}
+          </ion-col>
+          <ion-col col-6 class="placeholder-profile" *ngIf="!userProfile?.email">
+            <span> Tap here to edit. </span>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+
+    <ion-item (click)="updatePassword()">
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6> Password: </ion-col>
+          <ion-col col-6 class="placeholder-profile">
+            <span> Tap here to edit. </span>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <h1>
+      Driver Details:
+    </h1>
+    <ion-item (click)="updateCar()">
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6> Car </ion-col>
+          <ion-col col-6 *ngIf="userProfile?.CarMake || userProfile?.CarModel">
+            {{userProfile?.CarMake}} {{userProfile?.CarModel}}
+          </ion-col>
+          <ion-col col-6 class="placeholder-profile" *ngIf="!userProfile?.CarMake">
+            <span> Edit Here. </span>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+
+
+
+    <ion-item>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6> Driver ID </ion-col>
+          <ion-col col-6 *ngIf="userProfile?.DriverID">
+            {{userProfile?.DriverID}}
+          </ion-col>
+          <ion-col col-6 class="placeholder-profile" *ngIf="!userProfile?.DriverID">
+            <span> Edit Here. </span>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+
+
+    <ion-item (click)="updateLicensePlate()">
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6> License Plate Number </ion-col>
+          <ion-col col-6 *ngIf="userProfile?.LicensePlate">
+            {{userProfile?.LicensePlate}}
+          </ion-col>
+          <ion-col col-6 class="placeholder-profile" *ngIf="!userProfile?.LicensePlate">
+
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+  </ion-list>
+</ion-content>

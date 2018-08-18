@@ -1,0 +1,71 @@
+// http://ionicframework.com/docs/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+.no-scroll .scroll-content{
+  overflow: hidden;
+}
+.icon-badge {
+  top: 0px;
+  right: 0px;
+  background: #ffaf1e;
+  color: #000000;
+  font-size: 12px;
+  position: absolute;
+  padding: 5px 8px;
+  border-radius: 15px;
+}
+
+.scroll-content {
+  overflow-y: auto !important;
+}
+
+.alertCustomCss {
+  // text color for basic alerts
+  color: black;
+  text-align: center;
+
+  // alert modal page bg color. Warning this will remove the alert transparency
+  //background: linear-gradient(#666666, #222);
+
+  button {
+    color: black !important; // button text color
+    background-color: #e8c355 !important;
+    //button bg color
+  }
+
+  .h2{
+    color: gold;
+  }
+
+  .h4{
+    color: gold;
+  }
+
+
+  .alert-message {
+    color: white; // text color for confirm alerts
+  }
+
+  .alert-wrapper {
+    background: #797D7F; // bg color of alert content
+  }
+
+  //$text-input-highlight-color-valid: #666666;
+}
+.scroll-bar-indicator{
+  display: none;
+}
+

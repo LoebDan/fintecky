@@ -1,0 +1,59 @@
+<!--
+  Generated template for the DriverridenowPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <!--<ion-navbar [swipeBackEnabled]="false">-->
+    <ion-navbar>
+    <ion-title>Leaving Now!</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="rideForm" novalidate >
+    <ion-item>
+      <ion-label stacked>Start Hub:</ion-label>
+      <ion-select formControlName="startHub" [(ngModel)]="startHub" type="text">
+        <ion-option *ngFor="let hubs of allhubsList" [value]="hubs">{{hubs}}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>End Hub:</ion-label>
+      <ion-select formControlName="endHub" [(ngModel)]="endHub" type="text">
+        <ion-option *ngFor="let hub of allhubsList" [value]="hub">{{hub}}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item >
+      <span ion-text item-start class="item-bold">No of Seats Available:</span>
+      <button ion-button [disabled]="!(NoAvailSeats-1)" item-end icon-start (click)="Less()">
+        <ion-icon name='remove-circle'></ion-icon>
+      </button>
+      <span ion-text item-end color="subtle">{{NoAvailSeats}}</span>
+      <button ion-button item-end icon-start (click)="Add()">
+        <ion-icon name='add-circle'></ion-icon>
+      </button>
+    </ion-item>
+
+    <button ion-button block type="submit" (click)="rideNow(startHub, endHub)">
+      Ride Now!
+    </button>
+  </form>
+  <div #map id="map"></div>
+  <ion-grid>
+    <ion-row justify-content-center align-items-center>
+      <ion-card padding class="card">
+        <h1 class="headings">Interactive Hub Map</h1>
+        <p class="headings">Hover over a pin to view the hub name.</p>
+        <p class="headings">Selecting a pin displays a short description of the hub.</p>
+        <p class="headings">To view more information about our hubs, go to the Hubs Page through the navigation bar.</p>
+      </ion-card>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

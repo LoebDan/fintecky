@@ -1,0 +1,37 @@
+page-home {
+  .card {
+    border-radius: 10px;
+    border: 1.5px solid #e8c355;
+    background-color: #666666;
+    color: white;
+  }
+
+  #background {
+    background: #060606;
+  }
+
+  .head {
+    text-align: center;
+    background: linear-gradient(#343434, #222);
+    color: #e8c355;
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+
+  .toolbar-background {
+    background: linear-gradient(#343434, #222);
+  }
+
+  .learn{
+    background: linear-gradient(#343434, #222);
+  }
+
+  ion-icon {
+    color: #e8c355;
+  }
+
+
+}
+
+

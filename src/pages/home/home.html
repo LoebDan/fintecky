@@ -1,0 +1,205 @@
+<ion-header>
+  <!--<ion-navbar [swipeBackEnabled]="false">-->
+    <ion-navbar>
+    <ion-title>
+      <h3 style="color: #e8c355;">CARPOGO</h3>
+    </ion-title>
+
+    <ion-buttons end style="color: #e8c355; padding-right: 1%;">
+
+      <button *ngIf="show" ion-button block clear (click)="goToLogin()">
+        <h6 style="color: #e8c355;">LOG IN</h6>
+      </button>
+    </ion-buttons>
+
+    <ion-buttons end style="color: #e8c355; padding-right: 1%;">
+
+      <button *ngIf="show" ion-button block clear (click)="goToSignup()">
+        <h6 style="color: #e8c355;">SIGN UP</h6>
+      </button>
+    </ion-buttons>
+      <ion-buttons *ngIf="show" end style="color: #e8c355;">
+        <button ion-button block clear (click)="goToContactus()">
+          <h6 style="color: #e8c355;">CONTACT US</h6>
+        </button>
+    </ion-buttons>
+
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding id="background">
+
+  <ion-grid>
+    <ion-row justify-content-center align-items-center style="height: 100%">
+
+      <ion-col col-12 col-md-6 col-lg-4 col-xl-4>
+        <img src="../assets/imgs/logo.png">
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid>
+    <ion-row justify-content-center align-items-center style="height: 100%">
+      <ion-col col-12 col-md-6 col-lg-4 col-xl-3>
+        <ion-card class="card" fixed>
+          <ion-card-header class="head">About CarPoGo</ion-card-header>
+          <img src="../assets/imgs/logo.png" style="height: 205px;">
+          <ion-list>
+            <button ion-item detail-none class="learn" (click)="toggleAbout()">
+              <h2 style="color:#e8c355; font-weight: bold;">Learn More</h2>
+              <ion-icon item-right [name]="isAboutShown ? 'arrow-dropdown' : 'arrow-dropright'"></ion-icon>
+            </button>
+            <ion-list *ngIf="isAboutShown">
+              <h4 style="color:#e8c355; background-color: #444442; padding: 4%; text-align: left;">
+
+                CarPoGo is a platform designed to bring potential ride-sharers together.
+                CarPoGo enables its users to come into contact with CarPoGo approved car drivers for ride sharing
+                opportunities. This pairing of a passenger with a driver is done in an effective and time saving manner.
+                Unlike other ride sharing platforms, CarPoGo utilises a Hub System.
+                Through using centralised Hubs, both the driver and the passenger will know where the start and end location is situated.
+
+              </h4>
+            </ion-list>
+          </ion-list>
+        </ion-card>
+      </ion-col>
+      <ion-col col-12 col-md-6 col-lg-4 col-xl-3>
+        <ion-card class="card" fixed>
+          <ion-card-header class="head">CarPoGo Benefits</ion-card-header>
+          <img src="../assets/imgs/benefits.jpg" style="height: 205px;">
+          <ion-list>
+            <button ion-item detail-none class="learn" (click)="toggleBenefits()">
+              <h2 style="color:#e8c355; font-weight: bold;">Learn More</h2>
+              <ion-icon color="#e8c355" item-right [name]="isBenefitsShown ? 'arrow-dropdown' : 'arrow-dropright'"></ion-icon>
+            </button>
+            <ion-list *ngIf="isBenefitsShown">
+              <h4 style="color:#e8c355; background-color: #444442; padding: 4%; text-align: left;">
+
+                CarPoGo creates ride sharing opportunities where you can: <br>
+                &#9670; Make new friends.<br>
+                &#9670; Help save the environment.<br>
+                &#9670; Save money.<br>
+
+                It is proven that ride sharing relieves stress from passengers having to find parking, and deal with
+                traffic hassles. Ride sharing can significantly decrease the amount of cars on the road at a time.
+                With ride sharing, you can also help create a cleaner environment.
+                An added benefit is that anyone can become a CarPoGo driver, with the
+                necessary requirements of course, and make a little extra money while going about your normal daily routine.
+                CarPoGo uses a cashless system, where the user can topup their account instantaneously.
+                Once the ride has ended, the transaction will occur automatically, something you do not have to stress about.
+                A driver receives their payment through the credit card system, with the opportunity to withdraw the credits,
+                or use them to pay for rides.
+
+              </h4>
+            </ion-list>
+          </ion-list>
+        </ion-card>
+      </ion-col>
+      <ion-col col-12 col-md-6 col-lg-4 col-xl-3>
+        <ion-card class="card" fixed>
+          <ion-card-header class="head">Be a Passenger</ion-card-header>
+          <img src="../assets/imgs/pass.jpg" style="height: 205px;">
+          <ion-list>
+            <button ion-item detail-none class="learn" (click)="togglePassenger()">
+              <h2 style="color:#e8c355; font-weight: bold;">Learn More</h2>
+              <ion-icon color="#e8c355" item-right [name]="isPassengerShown ? 'arrow-dropdown' : 'arrow-dropright'"></ion-icon>
+            </button>
+            <ion-list *ngIf="isPassengerShown">
+              <h4 style="color:#e8c355; background-color: #444442; padding: 4%; text-align: left;">
+
+                Being a CarPoGo passenger is easy. As a passenger, you can either schedule a ride for later in the day or week,
+                or you can book an immediate ride. Drivers will see your ride posts and offer to give you a lift.
+                As a passenger, you can also view driver scheduled rides and ask to join their rides.
+                Since CarPoGo utilises a Hub system, with central Hubs, the pairing of a driver and passenger is more likely to occur.
+                Therefore, you can have ease of mind, knowing you have a high chance of being paired with a driver.
+                Unlike other ride sharing platforms, CarPoGo has a Party System. A party leader initiates a party and
+                shares a unique code with potential members. Once everyone has joined, the leader can book a ride for the entire party.
+                This ensures you can ride share with your friends or family. With CarPoGo, the more people there are in the car
+                during a driver's trip, the less the fare will be for the passengers and the more the driver will receive.
+
+              </h4>
+            </ion-list>
+          </ion-list>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row justify-content-center align-items-center style="height: 100%">
+      <ion-col col-12 col-md-6 col-lg-4 col-xl-3>
+        <ion-card class="card" fixed>
+          <ion-card-header class="head">Be a Driver</ion-card-header>
+          <img src="../assets/imgs/driver.jpg" style="height: 205px;">
+          <ion-list>
+            <button ion-item detail-none class="learn" (click)="toggleDriver()">
+              <h2 style="color:#e8c355; font-weight: bold;">Learn More</h2>
+              <ion-icon color="#e8c355" item-right [name]="isDriverShown ? 'arrow-dropdown' : 'arrow-dropright'"></ion-icon>
+            </button>
+            <ion-list *ngIf="isDriverShown">
+              <h4 style="color:#e8c355; background-color: #444442; padding: 4%; text-align: left;">
+
+                CarPoGo makes it easy for users to register as a driver. You must have all the necessary information ready,
+                and our team will inspect the validity of the information. You can register as a driver instantly, since security
+                measures are inplace during the registration process. As a driver you can either post your scheduled ride for
+                later in the day or week. Passengers can view these rides and ask to join. as a driver you can also view passenger
+                rides and ask to be their driver. Since CarPoGo has centralised Hubs, you can have ease of mind knowing the chances
+                of you not knowing where to pick up your passengers, are low. The Hubs also ensure that you can park at a save
+                spot to pick up the passengers. You might already be passing by these Hubs, so why not save on petrol money and make
+                some money while following your usual daily routine.
+
+              </h4>
+            </ion-list>
+          </ion-list>
+        </ion-card>
+      </ion-col>
+      <ion-col col-12 col-md-6 col-lg-4 col-xl-3>
+        <ion-card class="card" fixed>
+          <ion-card-header class="head">Our Hubs</ion-card-header>
+          <img src="../assets/imgs/locations.jpg" style="height: 205px;">
+          <ion-list>
+            <button ion-item detail-none class="learn" (click)="toggleHubs()">
+              <h2 style="color:#e8c355; font-weight: bold;">Learn More</h2>
+              <ion-icon color="#e8c355" item-right [name]="isHubsShown ? 'arrow-dropdown' : 'arrow-dropright'"></ion-icon>
+            </button>
+            <ion-list *ngIf="isHubsShown">
+              <h4 style="color:#e8c355; background-color: #444442; padding: 4%; text-align: left;">
+
+                The Hubs are carefully selected, conveniently located public locations in the Stellenbosch, Somerset West,
+                Gordons Bay, Strand, Durbanville and Cape Town areas. CarPoGo drivers are only allowed to pick up and
+                drop off passengers at the Hubs and no other place. This ensure effective communication regarding pick up and drop
+                off locations. It also ensures that this is done in the safest way. If the driver has to wait a few minutes for
+                a passenger, they can do so in a safe spot, and not park on the side of the road. Users are encourages to fill out the
+                contact us form and let us know to where we must expand our Hub locations. If you feel a Hub location needs to change
+                or move, please let us know. These Hubs are there to make ride sharing more convenient, safe and easy for you.
+
+              </h4>
+            </ion-list>
+          </ion-list>
+        </ion-card>
+      </ion-col>
+      <ion-col col-12 col-md-6 col-lg-4 col-xl-3>
+        <ion-card class="card" fixed>
+          <ion-card-header class="head">Your Safety</ion-card-header>
+          <img src="../assets/imgs/safety.jpg" style="height: 205px;">
+          <ion-list>
+            <button ion-item detail-none class="learn" (click)="toggleSafety()">
+              <h2 style="color:#e8c355; font-weight: bold;">Learn More</h2>
+              <ion-icon color="#e8c355" item-right [name]="isSafetyShown ? 'arrow-dropdown' : 'arrow-dropright'"></ion-icon>
+            </button>
+            <ion-list *ngIf="isSafetyShown">
+              <h4 style="color:#e8c355; background-color: #444442; padding: 4%; text-align: left;">
+
+                GarPoGo values the safety of all drivers and passengers. If you have ever felt unsafe at any
+                stage please make sure to contact us and one of our representatives will reach out to you. We strive
+                to improve where safety might be lacking. We encourage you providing us any feedback you may have.
+                We value your feedback and will act upon it. We want to make ride sharing more convenient, safe and easy for you.
+                As a general rule for drivers, do not pick up anyone that has not scheduled a ride. Also, do not
+                pick up anyone at a location that is not a Hub. As a general rule for passengers, make sure
+                it is your driver before you climb into the car.
+              </h4>
+            </ion-list>
+          </ion-list>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+</ion-content>

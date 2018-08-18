@@ -1,0 +1,73 @@
+<!--
+  Generated template for the TopupPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <!--<ion-navbar [swipeBackEnabled]="false">-->
+    <ion-navbar>
+    <ion-title>Top Up</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+ <!-- <ion-list>-->
+
+<!--
+    <ion-item>
+      <ion-label>Please Select Amount: </ion-label>
+      <ion-select *ngIf="Balance">
+        <ion-option value="50">50</ion-option>
+        <ion-option value="100">100</ion-option>
+        <ion-option value="150">150</ion-option>
+      </ion-select>
+    </ion-item>-->
+<!--
+    <ion-item>
+      <ion-label>Enter Amount:</ion-label>
+      <ion-input *ngIf="Balance" type="text"></ion-input>
+    </ion-item>-->
+
+    <!--
+    <ion-item>
+      <ion-label>R50</ion-label>
+      <ion-radio *ngIf="fifty" value="50"></ion-radio>
+    </ion-item>
+
+    <ion-item *ngIf="hundred">
+      <ion-label>R100</ion-label>
+      <ion-radio value="100"></ion-radio>
+    </ion-item>
+
+    <ion-item *ngIf="hundredfifty">
+      <ion-label>R150</ion-label>
+      <ion-radio value="150" ></ion-radio>
+    </ion-item>
+
+  </ion-list>-->
+
+
+
+
+
+  <form [formGroup]="UpdateBalanceForm"  novalidate>
+
+    <ion-item>
+      <ion-label floating>Enter Amount:</ion-label>
+      <ion-input formControlName="TopUp" type="text"></ion-input>
+    </ion-item>
+
+
+  <button ion-button small (click) = "enterCardDetails()">
+    <ion-icon name="card"></ion-icon>
+    <div>Top Up</div>
+  </button>
+</form>
+
+</ion-content>
+

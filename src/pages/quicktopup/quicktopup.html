@@ -1,0 +1,76 @@
+<!--
+  Generated template for the QuicktopupPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+
+  <!--<ion-navbar [swipeBackEnabled]="false">-->
+    <ion-title>Quick Top Up</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="closeModal()">Close</button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-grid >
+    <ion-row justify-content-center align-items-center >
+      <ion-list>
+        <h1>Enter Your Credit Card Details: </h1>
+
+        <p>Name on card:</p>
+        <ion-item>
+          <ion-input placeholder='John Doe'></ion-input>
+        </ion-item>
+
+        <p>Card Number:</p>
+        <ion-item>
+          <ion-input placeholder='4242424242424242'></ion-input>
+        </ion-item>
+
+        <p>Expiry Month:</p>
+        <ion-item>
+          <ion-input placeholder='08'></ion-input>
+        </ion-item>
+
+        <p>Expiry Year:</p>
+        <ion-item>
+          <ion-input placeholder='2018'></ion-input>
+        </ion-item>
+
+        <p>CVV:</p>
+        <ion-item>
+          <ion-input placeholder='123'></ion-input>
+        </ion-item>
+
+
+      </ion-list>
+    </ion-row>
+  </ion-grid>
+
+  <form [formGroup]="UpdateBalanceForm"  novalidate>
+    <ion-row >
+      <ion-list>
+        <h1>Enter Amount: </h1>
+    <ion-item>
+      <ion-label floating>100</ion-label>
+      <ion-input formControlName="TopUp" type="text"></ion-input>
+    </ion-item>
+
+
+    <button ion-button small (click) = "enterCardDetails()">
+      <ion-icon name="card"></ion-icon>
+      <div>Top Up</div>
+    </button>
+      </ion-list>
+    </ion-row>
+  </form>
+
+
+</ion-content>

@@ -1,0 +1,103 @@
+<!--
+  Generated template for the HubinfoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <!--<ion-navbar [swipeBackEnabled]="false">-->
+    <ion-navbar>
+    <ion-title>Hub Information</ion-title>
+  </ion-navbar>
+
+</ion-header>
+*ngFor="let hub of hubList"
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row justify-content-center align-items-center style="height: 100%">
+
+      <ion-card *ngFor="let hub of allhubs" class="card">
+        <ion-item text-wrap class="back">
+          <h2 class="item-bold" style="color: #e8c355;">Hub Details: {{hub.hubname}}</h2>
+          <div>
+            <!--<ion-item>-->
+            <ion-grid>
+              <!--<ion-row>-->
+                <!--<img [src]=hub.IMG>-->
+              <!--</ion-row>-->
+              <ion-row>
+                <ion-col>
+                  <h5 class="item-bold" style="color: #e8c355;">Address:</h5>
+                </ion-col>
+                <ion-col>
+                  <span ion-text item-start class="item-bold">{{hub.Address}}</span>
+                </ion-col>
+              </ion-row>
+              <ion-row class="vp-row">
+                <ion-col>
+                  <h5 class="item-bold" style="color: #e8c355;">Hub Type:</h5>
+                </ion-col>
+                <ion-col>
+                  <span ion-text item-start class="item-bold">{{hub.HubType}}</span>
+                </ion-col>
+              </ion-row>
+              <ion-row class="vp-row">
+                <ion-col>
+                  <p class="item-bold" style="color: #C0C0C0">Info:</p>
+                </ion-col>
+                <ion-col>
+                  <p class="item-bold" style="color: #C0C0C0">{{hub.Info}}</p>
+                </ion-col>
+              </ion-row>
+              <ion-row class="vp-row">
+                <ion-col>
+                  <h5 class="item-bold" style="color: #e8c355;">Main Area:</h5>
+                </ion-col>
+                <ion-col>
+                  <span ion-text item-start class="item-bold" style="color: #e8c355;">{{hub.MainArea}}</span>
+                </ion-col>
+              </ion-row>
+
+
+            </ion-grid>
+            <!--</ion-item>-->
+            <ion-row >
+
+            </ion-row>
+          </div>
+
+
+        </ion-item>
+      </ion-card>
+    </ion-row>
+  </ion-grid>
+
+<ion-content>
+  <ion-card *ngFor="let hub of hubList" type="text" >
+    <ion-card-header>
+      Hub
+    </ion-card-header>
+    <ion-item>
+
+      <!--<ion-label stacked>Start Hub:</ion-label>-->
+      <!--<ion-select [(ngModel)]="hublist" type="text">-->
+        <!--<ion-option *ngFor="let hubs of allhubsList" [value]="hubs">{{hubs}}</ion-option>-->
+      <!--</ion-select>-->
+
+    </ion-item>
+
+    <ion-card-content>
+      <ion-row>
+        <ion-col col-8>
+          <ion-item>
+            <ion-label stacked>Name</ion-label>
+
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

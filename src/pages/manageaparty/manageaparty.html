@@ -1,0 +1,149 @@
+<!--
+  Generated template for the ManageapartyPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <!--<ion-navbar [swipeBackEnabled]="false">-->
+    <ion-navbar>
+    <ion-title>Current Party</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row justify-content-center align-items-center style="height: 100%">
+
+
+      <ion-card class="card">
+
+        <ion-row justify-content-center align-items-center>
+          <ion-col col-6 >
+            <h1 style="color: #e8c355;">Party Code:</h1> <h1 style="color: #e8c355;"><strong>{{PartyID}}</strong></h1>
+          </ion-col>
+        </ion-row>
+
+
+        <h2 style="color: #e8c355;">Current Party Members:</h2>
+        <ion-row *ngFor="let names of FirstNames" justify-content-center align-items-center>
+          <ion-col col-6>
+            <p style="color: #e8c355;">{{names}}</p>
+          </ion-col>
+        </ion-row>
+      </ion-card>
+
+        <ion-card class="card">
+        <ion-row *ngIf="!leader">
+            <p style="text-align: justify; padding: 1%; color: #e8c355;">
+              Since you are not the Party Leader, you are unable to schedule a ride for the party.
+              You can also not disband the party, you can only exit the party.
+              If you want to create your own party, or join another party, you must first exit this party.
+            </p>
+        </ion-row>
+
+        <ion-row *ngIf="leader">
+            <p style="text-align: justify; padding: 1%; color: #e8c355;">
+              Since you are the Party Leader, you are in charge of scheduling and paying for the party's ride.
+              By clicking on the disband party button, you end the party for the whole party.
+            </p>
+        </ion-row>
+
+
+        <button *ngIf="leader" ion-button small (click) = "getaride()">
+          <ion-icon name="card"></ion-icon>
+          <div padding >Get a Ride</div>
+        </button>
+
+        <button *ngIf="!leader" ion-button small (click) = "exitparty()">
+          <ion-icon name="card"></ion-icon>
+          <div padding>Exit Party</div>
+        </button>
+
+        <button *ngIf="leader" ion-button small (click) = "disbandparty()">
+          <ion-icon name="card"></ion-icon>
+          <div padding>Disband Party</div>
+        </button>
+      </ion-card>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+
+
+<!--Old
+ <ion-card>
+        <div style="position: relative">
+          <img src="assets/imgs/logo.png">
+        </div>
+
+    <h1> Party Leader: </h1>
+    <ion-row>
+      <ion-col col-6 *ngIf="Parties?.PartyLeader">
+        {{Parties?.PartyLeader}}
+      </ion-col>
+    </ion-row>
+
+    <h1> Other Party Members: </h1>
+    <ion-row>
+      <ion-col col-6 *ngIf="Parties?.PartyMember1">
+        {{Parties?.PartyMember1}}
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-6 *ngIf="Parties?.PartyMember2">
+        {{Parties?.PartyMember2}}
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-6 *ngIf="Parties?.PartyMember3">
+        {{Parties?.PartyMember3}}
+      </ion-col>
+    </ion-row>
+
+  </ion-card>
+
+  <ion-card>
+
+    <h1>Ride Information:</h1>
+
+    <ion-row>
+      <h2>Driver's Car Number Plate:</h2>
+      <ion-col col-6 *ngIf="PassengerScheduledRides?.DriverCarPlate">
+        {{"PassengerScheduledRides?.DriverCarPlate"}}
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <h2>Start Location:</h2>
+      <ion-col col-6 *ngIf="PassengerScheduledRides?.PassengerStartLocation">
+        {{"PassengerScheduledRides?.PassengerStartLocation"}}
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <h2>End Location:</h2>
+      <ion-col col-6 *ngIf="PassengerScheduledRides?.PassengerEndLocation">
+        {{"PassengerScheduledRides?.PassengerEndLocation"}}
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <h2>Departure Date:</h2>
+      <ion-col col-6 *ngIf="PassengerScheduledRides?.DepartureDate">
+        {{"PassengerScheduledRides?.DepartureDate"}}
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <h2>Departure Time:</h2>
+      <ion-col col-6 *ngIf="PassengerScheduledRides?.DepartureTime">
+        {{"PassengerScheduledRides?.DepartureTime"}}
+      </ion-col>
+    </ion-row>
+
+  </ion-card>
+-->

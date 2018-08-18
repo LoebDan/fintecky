@@ -1,0 +1,38 @@
+page-passjoinride {
+  //ion-card.adv-map p {
+  //  font-size: 0.9em !important;
+  //}
+  //
+  //ion-card.adv-map h2 {
+  //  font-size: 1em !important;
+  //  color: black;
+  //}
+  //
+  ion-card.adv-map {
+    max-width: 500px;
+    color: black;
+  }
+
+  .item-bold {
+    font-weight: bold;
+  }
+
+  .alignleft {
+    float: left;
+  }
+  .alignright {
+    float: right;
+  }
+  h1{
+    font-size: 1em !important;
+    font-weight: bold;
+  }
+  .vp-row {
+    padding-top: -5px;
+    padding-bottom: -5px;
+    margin-top: -5px;
+    margin-bottom: -5px;
+    border-bottom:  black;
+  }
+
+}

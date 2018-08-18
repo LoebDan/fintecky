@@ -1,0 +1,100 @@
+<!--
+  Generated template for the DriverPickUpPassengerPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <!--<ion-navbar [swipeBackEnabled]="false">-->
+    <ion-navbar>
+    <ion-title>Pick Up Passengers</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row justify-content-center align-items-center style="height: 100%">
+      <ion-card *ngFor="let ride of RidesArray" class="card">
+        <ion-item text-wrap class="back">
+          <h1 class="headings">Ride Details</h1>
+          <div class="table">
+            <ion-grid>
+              <ion-row class="vp-row">
+                <ion-col>
+                  <h5 class="headings">Date:</h5>
+                </ion-col>
+                <ion-col>
+                  <span ion-text item-start class="headings">{{ride.DepartureDate}}</span>
+                </ion-col>
+              </ion-row>
+              <ion-row class="vp-row">
+                <ion-col>
+                  <h5 class="headings">Time:</h5>
+                </ion-col>
+                <ion-col>
+                  <span ion-text item-start class="headings">{{ride.DepartureTime}}</span>
+                </ion-col>
+              </ion-row>
+              <ion-row class="vp-row">
+                <ion-col>
+                  <h5 class="headings">Start location:</h5>
+                </ion-col>
+                <ion-col>
+                  <span ion-text item-start class="headings">{{ride.StartHub}}</span>
+                </ion-col>
+              </ion-row>
+              <ion-row class="vp-row">
+                <ion-col>
+                  <p class="headings">Address:</p>
+                </ion-col>
+                <ion-col>
+                  <p class="headings">{{ride.DriverStartLocation}}</p>
+                </ion-col>
+              </ion-row>
+              <ion-row class="vp-row">
+                <ion-col>
+                  <h5 class="headings">End location:</h5>
+                </ion-col>
+                <ion-col>
+                  <span ion-text item-start class="headings">{{ride.EndHub}}</span>
+                </ion-col>
+              </ion-row>
+              <ion-row class="vp-row">
+                <ion-col>
+                  <p class="headings">Address:</p>
+                </ion-col>
+                <ion-col>
+                  <p class="headings">{{ride.DriverEndLocation}}</p>
+                </ion-col>
+              </ion-row>
+              <ion-row class="vp-row">
+                <ion-col>
+                  <h5 class="headings">Cost:</h5>
+                </ion-col>
+                <ion-col>
+                  <span ion-text item-start class="headings">{{ride.BaseCost}} Credits</span>
+                  <span ion-text item-start class="headings">({{ride.Distance/1000}} Km)</span>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  <ion-item  text-wrap class="back">
+                    <ion-row>
+                      <button ion-button (click) = "JoinRequest(ride)" small>
+                        <ion-icon name="card"></ion-icon>
+
+                        <div padding>Request to be Driver</div>
+
+                      </button>
+                    </ion-row>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </div>
+        </ion-item>
+      </ion-card>
+    </ion-row>
+  </ion-grid>
+</ion-content>

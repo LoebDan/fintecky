@@ -1,0 +1,41 @@
+<!--
+  Generated template for the JoinapartyPage page.
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <!--<ion-navbar [swipeBackEnabled]="false">-->
+    <ion-navbar>
+    <ion-title>Join a Party</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-grid >
+    <ion-row justify-content-center align-items-center style="height: 100%">
+
+      <ion-card class="card">
+
+        <h1 style="color: #e8c355;">Please enter the PARTY CODE provided by your party leader:</h1>
+
+        <form [formGroup]="JoinPartyForm"  novalidate>
+
+          <ion-item padding class="back">
+            <ion-input formControlName="PartyCode" type="text" placeholder="Enter Party Code"></ion-input>
+          </ion-item>
+
+          <button ion-button padding small (click) = "enterPartyCode()">
+            <ion-icon name="card"></ion-icon>
+            <div padding>Join Party</div>
+          </button>
+        </form>
+
+      </ion-card>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

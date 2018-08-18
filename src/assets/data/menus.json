@@ -1,0 +1,38 @@
+{
+  "category": "Processor",
+  "subcategory": [
+    {
+      "manufacture": "Intel"
+    },
+    {
+      "manufacture": "AMD"
+    }
+  ],
+  "category": "Motherboard",
+  "subcategory": [
+    {
+      "manufacture": "Asus"
+    },
+    {
+      "manufacture": "AMD"
+    },
+    {
+      "manufacture": "GigaByte"
+    },
+    {
+      "manufacture": "Intel"
+    }
+  ],
+  "category": "Memory",
+  "subcategory": [
+    {
+      "manufacture": "Visipro"
+    },
+    {
+      "manufacture": "Crucial"
+    },
+    {
+      "manufacture": "VenomRX"
+    }
+  ]
+}

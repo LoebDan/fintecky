@@ -1,0 +1,135 @@
+<!--
+  Generated template for the StartapartyPage page.
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <!--<ion-navbar [swipeBackEnabled]="false">-->
+    <ion-navbar>
+    <ion-title>Start a Party</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-grid style="height: 100%">
+    <ion-row justify-content-center align-items-center>
+
+      <ion-card class="adv-map">
+        <!--<div style="position: relative">-->
+          <!--<img src="assets/imgs/logo.png">-->
+        <!--</div>-->
+
+        <h1 style="color: #e8c355;">What is a party?</h1>
+
+
+        <p text-wrap style="text-align:justify; color: #e8c355; padding: 1%">By starting a party, you become the party leader, and you
+          can invite other members through sharing the party code with them. They enter the party code in the text box
+          on the ‘Join Party’ page. We recommend limiting a party to 3 members since that is the number of seats a driver tends
+          to have available.
+        </p>
+        <p text-wrap style="text-align:justify; color: #e8c355; padding: 1%">
+          Through creating a party you receive a discounted rate and you can ensure you and your
+          friends are on the same ride. The discounted rate is calculated on the number of people in your party.
+          The bigger the party the bigger the discount.
+        </p>
+        <p text-wrap style="text-align:justify; color: #e8c355; padding: 1%">
+          As a party leader, once all the members have joined you can schedule a ride for the party. You will then be
+          in control and responsible for the ride scheduling process. You will also be responsible for paying for all
+          the members, but you will receive the discount rate based on the size of your party.
+        </p>
+        <p text-wrap style="text-align:justify; color: #e8c355; padding: 1%">
+          Every user can only belong to one party at a time. If you want to create a new party or join another party,
+          you first have to disband the current party.
+        </p>
+
+        <button ion-button block type="submit" small (click) = "getapartycode()">
+          <ion-icon name="card"></ion-icon>
+          <div padding>Start a Party</div>
+        </button>
+
+      </ion-card>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
+
+
+<!--OLD
+<h1> Current Members: </h1>
+
+        <ion-row padding>
+          <ion-col col-6 *ngIf="Members">
+            {{Members}}
+          </ion-col>
+        </ion-row>
+
+
+        <h1>Share this code with Party Members you wish to add to the party:</h1>
+
+        <button ion-button block type="submit" small (click) = "getapartycode()">
+          <ion-icon name="card"></ion-icon>
+          <div padding>View Party Code</div>
+        </button>
+
+
+
+        <ion-row justify-content-center align-items-center>
+          <ion-col col-6 >
+            <h2><strong>{{PartyID}} credits</strong></h2>
+          </ion-col>
+        </ion-row>
+
+
+        <button ion-button small (click) = "getaride()">
+          <ion-icon name="card"></ion-icon>
+          <div padding >Get a Ride</div>
+        </button>
+        <button ion-button small (click) = "disbandparty()">
+          <ion-icon name="card"></ion-icon>
+          <div padding>Disband Party</div>
+        </button>
+        -->
+
+
+
+
+
+
+<!--
+  <h1>You can add up to 3 other party members</h1>
+  <ion-card padding>
+    <h1> Current Members: </h1>
+    <ion-row>
+      <ion-col col-6 *ngIf="Members">
+        {{Members}}
+      </ion-col>
+    </ion-row>
+  </ion-card>
+  <ion-row>
+    <h1>Share this code with Party Members you wish to add to the party:</h1>
+    <button ion-button small (click) = "getapartycode()">
+      <ion-icon name="card"></ion-icon>
+      <div>View Party Code</div>
+    </button>
+    <ion-col col-6 *ngIf="PartyCode">
+      {{PartyCode}}
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <button ion-button small (click) = "getaride()">
+      <ion-icon name="card"></ion-icon>
+      <div>Get a Ride</div>
+    </button>
+    <button ion-button small (click) = "disbandparty()">
+      <ion-icon name="card"></ion-icon>
+      <div>Disband Party</div>
+    </button>
+  </ion-row>
+</ion-content>
+-->
+
+

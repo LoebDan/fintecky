@@ -1,0 +1,50 @@
+page-login {
+  form{
+    //background-color: #8e9093;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+
+  }
+  //ion-item:first-child {
+  //  border-top-left-radius: 15px;
+  //  border-top-right-radius: 15px;
+  //}
+  //ion-item:last-child {
+  //  border-bottom-left-radius: 15px;
+  //  border-bottom-right-radius: 15px;
+  //}
+  ion-item.item {
+    background-color: rgba(255, 255, 255, 0.4);
+    margin-bottom: 5px;
+
+  }
+  input{
+    background-color: rgb(96, 84, 84) !important;
+
+  }
+  ion-buttons{
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+  }
+
+  input:-webkit-autofill{
+    background-color: rgb(96, 84, 84) !important;
+  }
+
+  img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+    padding-bottom: 15px;
+  }
+
+  #background {
+    background: #060606;
+  }
+
+}

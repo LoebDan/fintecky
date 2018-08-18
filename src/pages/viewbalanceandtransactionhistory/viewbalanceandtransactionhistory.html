@@ -1,0 +1,97 @@
+<!--
+  Generated template for the ViewbalanceandtransactionhistoryPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <!--<ion-navbar [swipeBackEnabled]="false">-->
+    <ion-navbar>
+    <ion-title>Credits and Transactions</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-grid style="height: 100%">
+    <ion-row justify-content-center align-items-center>
+
+        <ion-card >
+
+          <h1>Your Current Balance: </h1>
+
+          <ion-row justify-content-center align-items-center>
+            <ion-col col-6 >
+              <h2><strong>{{Balance}} credits</strong></h2>
+            </ion-col>
+          </ion-row>
+
+          <ion-row justify-content-center align-items-center>
+            <ion-col col-6 *ngIf="!Balance">
+              <h2><strong>You have no credits in your account, we recommend topping up!</strong></h2>
+
+            </ion-col>
+          </ion-row>
+
+
+          <ion-row justify-content-center align-items-center>
+            <button ion-button small (click) = "topUp()">
+              <ion-icon name="card"></ion-icon>
+              <div padding>Top Up</div>
+            </button>
+            <button [disabled]="!Balance" ion-button small (click) = "withdraw()">
+              <ion-icon name="card"></ion-icon>
+              <div padding>Withdraw</div>
+            </button>
+          </ion-row>
+
+        </ion-card>
+
+      <ion-card >
+        <ion-item text-wrap>
+          <h1>Transaction History:</h1>
+
+          <div class="table">
+            <!--<ion-item>-->
+              <ion-grid>
+                <ion-row >
+                  <ion-col>
+                    <h5>Date:</h5>
+                  </ion-col>
+                  <ion-col>
+                    <h5>Transaction Type: </h5>
+                  </ion-col>
+                  <ion-col>
+                    <h5>Credit Amount:</h5>
+                  </ion-col>
+                </ion-row>
+
+                <ion-row *ngFor="let transactions of pastTransArray" class="vp-row">
+                  <ion-col>
+                    <p>{{transactions.TransactionDate}}</p>
+                  </ion-col>
+
+                  <ion-col>
+                    <p>{{transactions.TransactionType}}</p>
+                  </ion-col>
+
+                  <ion-col>
+                    <p>{{transactions.CreditAmount}}</p>
+                  </ion-col>
+                </ion-row>
+
+              </ion-grid>
+            <!--</ion-item>-->
+          </div>
+
+
+        </ion-item>
+      </ion-card>
+
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
