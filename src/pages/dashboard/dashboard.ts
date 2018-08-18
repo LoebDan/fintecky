@@ -1,5 +1,5 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import firebase from 'firebase';
 import {AuthProvider} from "../../providers/auth/auth";
 
@@ -10,7 +10,6 @@ import {AuthProvider} from "../../providers/auth/auth";
  * Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
   selector: 'page-dashboard',
   templateUrl: 'dashboard.html',
@@ -26,10 +25,9 @@ export class DashboardPage {
 
   myUID = 'asdadUID';
   merchant = {name : 'Jeff\'s Place'};
-  productsOnSpeciall;
-  productsOnSpecial = [];
-  productsInBudgett;
-  productsInBudget = [];
+  productsOnSpecial;
+  displayProducts= [];
+  productsInBudget;
 
   RideOb = {};
   RidesArray = [];
@@ -70,7 +68,6 @@ export class DashboardPage {
       longitude: 18.8601
     };
     await this.delay(3000).then(() => {
-      this.testcall();
     });
   }
 
@@ -98,10 +95,6 @@ export class DashboardPage {
     return new Promise( resolve => setTimeout(resolve, ms) );
   }
 
-  async testcall(){
-
-  }
-
   placeOrder(product) {
     console.log(product);
 
@@ -114,25 +107,28 @@ export class DashboardPage {
 
   getSpecials() {
     firebase.database().ref('/Products').orderByChild('special').equalTo('T').once('value', async snapshot => {
-        this.productsOnSpeciall = snapshot.val();
+        this.productsOnSpecial = snapshot.val();
+        this.displayProducts = [];
         for ( const ob of Object.keys(snapshot.val())) {
-          this.productsOnSpecial.push(this.productsOnSpeciall[ob]);
+          this.displayProducts.push(this.productsOnSpecial[ob]);
           console.log(ob);
         }
         console.log(snapshot.val());
-        //setTimeout(() => { this.loadingIndicator = false; }, 1500);
       }
     );
   }
 
   budgetProducts (budget) {
+    budget = parseInt(budget)
+    console.log("budget by " + budget + " type " + budget.type);
     firebase.database().ref('/Products').orderByChild('price').endAt(budget).once('value', async snapshot => {
-        this.productsInBudgett = snapshot.val();
+       this.productsInBudget = snapshot.val();
+        this.displayProducts = [];
         for ( const ob of Object.keys(snapshot.val())) {
-          this.productsInBudget.push(this.productsInBudgett[ob]);
-          console.log('Products in Budget');
-          console.log(ob);
+          this.displayProducts.push(this.productsInBudget[ob]);
         }
+         console.log('Products in Budget');
+        console.log(this.displayProducts);
         //setTimeout(() => { this.loadingIndicator = false; }, 1500);
       }
     );
