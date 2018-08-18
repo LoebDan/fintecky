@@ -38,12 +38,12 @@ export class MyApp {
   ) {
 
     firebase.initializeApp({
-      apiKey: "AIzaSyBHCD0eXfqgSvi7eXiPNUhRraKntdf-hCs",
-      authDomain: "carpogo-8e7a4.firebaseapp.com",
-      databaseURL: "https://carpogo-8e7a4.firebaseio.com",
-      projectId: "carpogo-8e7a4",
-      storageBucket: "carpogo-8e7a4.appspot.com",
-      messagingSenderId: "555180759021"
+      apiKey: 'AIzaSyCwgaH8Z9yX_VFibVuW4UlXqBLODeZYVnA',
+      authDomain: 'angtest-586b5.firebaseapp.com',
+      databaseURL: 'https://angtest-586b5.firebaseio.com',
+      projectId: 'angtest-586b5',
+      storageBucket: 'angtest-586b5.appspot.com',
+      messagingSenderId: '449000883304'
 
     });
     this.rootPage = 'LoginPage';
