@@ -33,18 +33,16 @@ export class MyApp {
     statusBar: StatusBar,
     splashScreen: SplashScreen,
     public menu: MenuController,
-    public events: Events,
-    // NotificationsProvider: NotificationsProvider
+    public events: Events
   ) {
 
     firebase.initializeApp({
-      apiKey: 'AIzaSyCwgaH8Z9yX_VFibVuW4UlXqBLODeZYVnA',
-      authDomain: 'angtest-586b5.firebaseapp.com',
-      databaseURL: 'https://angtest-586b5.firebaseio.com',
-      projectId: 'angtest-586b5',
-      storageBucket: 'angtest-586b5.appspot.com',
-      messagingSenderId: '449000883304'
-
+      apiKey: 'AIzaSyCsO9pcpUt1b-TmMMr2mRZrU-30fGocNcI',
+      authDomain: 'tester-f1264.firebaseapp.com',
+      databaseURL: 'https://tester-f1264.firebaseio.com',
+      projectId: 'tester-f1264',
+      storageBucket: 'tester-f1264.appspot.com',
+      messagingSenderId: '1086749179711'
     });
     this.rootPage = 'LoginPage';
     this.showMenu = false;

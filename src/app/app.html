@@ -11,18 +11,12 @@
     <ion-content id="menu-content" overflow-scroll="false">
       <div #header>
         <ion-row style="align-items:center;">
-          <ion-col col-3>
-            <img src="assets/imgs/emailicon.png" menuClose (click)="openPage('ViewnotificationsPage')"/>
-            <span class="icon-badge">{{notCount}}</span>
-          </ion-col>
           <ion-col col-6>
             <img class="user-avatar-round" [src]="chosenPicture || placeholder" onerror="this.src='assets/imgs/LogoDNBG.png'" menuClose (click)="openPage('ProfilePage')"/>
           </ion-col>
         </ion-row>
         <ion-row style="justify-content: center;">
-
           <h4 style="font-size: 15px;">Click on the CarPoGo Logo to see Your Profile Details.</h4>
-
           <p style="padding-bottom: 30px"></p>
         </ion-row>
       </div>

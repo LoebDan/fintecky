@@ -37,9 +37,9 @@
         <h1 class="headings"> Today's Specials </h1>
         <ion-card *ngFor="let product of productsOnSpecial">
           <ion-card-header>{{product.merchant}}</ion-card-header>
-          <img style="max-height: 100px; max-width: 100px" mat-card-image src={{product.image}} alt={{product.desc}}>
           <ion-card-content>
             <h2>{{product.name}}</h2>
+            <img style="max-height: 100px; max-width: 100px" src={{product.image}} alt={{product.desc}}>
             <p>{{product.desc}} for R {{product.price}}. </p>
             <button style="background-color: brown" (click)='placeOrder(product)' mat-button>ORDER</button>
           </ion-card-content>

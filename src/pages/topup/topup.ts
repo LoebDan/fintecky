@@ -8,7 +8,6 @@ import { AuthProvider } from '../../providers/auth/auth';
 import firebase from 'firebase';
 
 import { FormBuilder, FormGroup } from "@angular/forms";
- import {CarddetailsPage} from "../carddetails/carddetails";
 
 /**
  * Generated class for the TopupPage page.
