@@ -30,6 +30,12 @@ export class DashboardPage {
   Unread = [];
   NotOb;
 
+  myUID = 'asdadUID';
+  merchant = {name : 'Jeff\'s Place'};
+  productsOnSpeciall;
+  productsOnSpecial = [];
+  productsInBudgett;
+  productsInBudget = [];
 
   RideOb = {};
   RidesArray = [];
@@ -139,5 +145,29 @@ export class DashboardPage {
     catch (e) {
       console.log(e)
     }
+  }
+
+  placeOrder(product) {
+    console.log(product);
+
+    firebase.database().ref(`/Clients/${this.myUID}/balance`).once('value', async snapshot => {
+      let temp = snapshot.val();
+      temp -= product.price;
+      firebase.database().ref(`/Clients/${this.myUID}/balance`).set(temp);
+    });
+  }
+
+  budgetProducts (budget) {
+    firebase.database().ref('/Products').orderByChild('price').endAt(budget).once('value', async snapshot => {
+        this.productsInBudgett = snapshot.val();
+        for ( const ob of Object.keys(snapshot.val())) {
+          this.productsInBudget.push(this.productsInBudgett[ob]);
+          console.log('Products in Budget');
+          console.log(ob);
+        }
+        //setTimeout(() => { this.loadingIndicator = false; }, 1500);
+      }
+    );
+
   }
 }

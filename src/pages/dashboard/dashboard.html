@@ -15,119 +15,35 @@
 
 <ion-content padding>
 
+    <!--<ion-expansion-panel hideToggle>
+      <mat-expansion-panel-header >
+        <mat-panel-title matTooltip="Budget">
+          <strong>Set budget for meal ⇅</strong>
+        </mat-panel-title>
+        <mat-panel-description>
+          <span></span>
+          <mat-icon matTooltip="Click to expand">find_in_page</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <input type="number" class="form-control" id="budget" min="0" max="99" (change)='budgetProducts($index)>
+        &lt;!&ndash;button style="background-color: forestgreen" (click)='budgetProducts($index)' mat-button>GO!</button>
+    </ion-expansion-panel-->
+
   <ion-grid >
     <ion-row justify-content-center align-items-center style="height: 100%">
 
-      <!-- Card - Current Balance-->
+      <!-- Current Specials -->
       <ion-card padding class="card">
-        <h1 class="headings">Your Current Balance: </h1>
-        <ion-row justify-content-center align-items-center>
-          <ion-col col-6 >
-            <h2 class="headings"><strong>{{Balance}} Credits</strong></h2>
-          </ion-col>
-        </ion-row>
-
-        <ion-row justify-content-center align-items-center>
-          <ion-col col-6 *ngIf="!Balance">
-            <h2 class="headings"><strong>You have no credits in your account, we recommend topping up!</strong></h2>
-          </ion-col>
-        </ion-row>
-
-        <ion-row justify-content-center align-items-center>
-          <button ion-button small (click) = "topUp()">
-            <ion-icon name="card"></ion-icon>
-            <div padding>Top Up</div>
-          </button>
-        </ion-row>
-      </ion-card>
-
-
-      <!--Card upcoming rides -->
-      <ion-card padding class="card">
-        <ion-item text-wrap class="back">
-          <h1 class="headings">Recent Notifications:</h1>
-          <div class="table">
-            <!--<ion-item>-->
-            <ion-grid>
-              <ion-row >
-                <ion-col>
-                  <h5 class="headings">Date:</h5>
-                </ion-col>
-                <ion-col>
-                  <h5 class="headings">Message: </h5>
-                </ion-col>
-                <ion-col>
-                  <h5 class="headings">Dismiss: </h5>
-                </ion-col>
-              </ion-row>
-
-              <ion-row *ngFor="let NotOB of Unread" class="vp-row">
-                <ion-col>
-                  <p class="headings">{{NotOB.Date}} : </p>
-                </ion-col>
-                <ion-col>
-                  <p class="headings">{{NotOB.message}}</p>
-                </ion-col>
-                <ion-col justify-content-center>
-                  <button ion-button item-end="" small (click) = "ReadM(NotOB)">
-                    <ion-icon name="tick"></ion-icon>
-                    <div padding>Read</div>
-                  </button>
-                </ion-col>
-              </ion-row>
-            </ion-grid>
-          </div>
-        </ion-item>
-      </ion-card>
-
-      <!--Card - Awaiting a driver-->
-      <ion-card padding class="card">
-        <ion-item text-wrap class="back">
-          <h1 class="headings">Your Rides Still Awaiting a Pairing: </h1>
-          <div class="table">
-            <ion-grid>
-              <ion-row >
-                <ion-col>
-                  <h5 class="headings">Date:</h5>
-                </ion-col>
-                <ion-col>
-                  <h5 class="headings">Ride ID: </h5>
-                </ion-col>
-                <ion-col>
-                  <h5 class="headings">Ride Status:</h5>
-                </ion-col>
-              </ion-row>
-
-              <ion-row *ngFor="let ride of RidesArray" class="vp-row">
-
-                <ion-col>
-                  <p class="headings">{{ride.Date}}</p>
-                </ion-col>
-
-                <ion-col>
-                  <p class="headings">{{ride.RideID}}</p>
-                </ion-col>
-
-                <ion-col>
-                  <p class="headings">{{ride.Status}}</p>
-                </ion-col>
-              </ion-row>
-            </ion-grid>
-            <!--</ion-item>-->
-          </div>
-        </ion-item>
-      </ion-card>
-      <!-- Card - Drivers Leaving Soon -->
-
-
-      <ion-card padding>
-        <h1 class="headings">Interactive Hub Map</h1>
-        <p class="headings">Hover over a pin to view the hub name.</p>
-        <p class="headings">Selecting a pin displays a short description of the hub.</p>
-        <p class="headings">To view more information about our hubs, go to the Hubs Page through the navigation bar.</p>
-      </ion-card>
-      <ion-card class="transparent-card">
-        <div #map id="gmap" style="height:500px;"></div>
+        <h1 class="headings"> Today's Specials </h1>
+        <ion-card *ngFor="let product of productsOnSpecial">
+          <ion-card-header>{{product.merchant}}</ion-card-header>
+          <img style="max-height: 100px; max-width: 100px" mat-card-image src={{product.image}} alt={{product.desc}}>
+          <ion-card-content>
+            <h2>{{product.name}}</h2>
+            <p>{{product.desc}} for R {{product.price}}. </p>
+            <button style="background-color: brown" (click)='placeOrder(product)' mat-button>ORDER</button>
+          </ion-card-content>
+        </ion-card>
       </ion-card>
     </ion-row>
   </ion-grid>

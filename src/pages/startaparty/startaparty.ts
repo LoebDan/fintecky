@@ -11,8 +11,6 @@ import firebase from 'firebase';
 //
 // import {DashboardPage} from "../dashboard/dashboard";
 
-import {GetpartyidProvider} from "../../providers/getpartyid/getpartyid";
-
 import { User } from '@firebase/auth-types';
 import {ManageapartyPage} from "../manageaparty/manageaparty";
 // import {CarddetailsPage} from "../carddetails/carddetails";
