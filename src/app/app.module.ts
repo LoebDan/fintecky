@@ -29,6 +29,7 @@ import { NotificationsProvider } from '../providers/notifications/notifications'
 import { QuicktopupPage} from "../pages/quicktopup/quicktopup";
 import { ViewnotificationsPage} from "../pages/viewnotifications/viewnotifications";
 import { RidesProvider } from '../providers/rides/rides';
+import {ChartDataProvider} from "../providers/chartdata/charts";
 
 
 @NgModule({
@@ -104,7 +105,8 @@ import { RidesProvider } from '../providers/rides/rides';
     BalanceProvider,
     PartyProvider,
     NotificationsProvider,
-    RidesProvider
+    RidesProvider,
+    ChartDataProvider
   ]
 })
 export class AppModule {}
