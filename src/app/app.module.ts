@@ -73,6 +73,7 @@ import {MerchantproductsPage} from "../pages/merchantproducts/merchantproducts";
         { component: JoinapartyPage, name: 'JoinapartyPage', segment: 'JoinapartyPage' },
         { component: ViewnotificationsPage, name: 'ViewnotificationsPage', segment: 'ViewnotificationsPage'},
         { component: UserdataPage, name: 'UserdataPage', segment: 'UserdataPage'},
+        { component: MerchantproductsPage, name: 'MerchantproductsPage', segment: 'MerchantproductsPage'},
         ]
     }),
   ],

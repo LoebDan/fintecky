@@ -4,7 +4,7 @@ import { MerchantproductsPage } from './merchantproducts';
 
 @NgModule({
   declarations: [
-    // DashboardPage,
+    // MerchantproductsPage,
   ],
   imports: [
     IonicPageModule.forChild(MerchantproductsPage),

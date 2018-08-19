@@ -21,7 +21,7 @@ export class MerchantproductsPage {
   public  Read = [];
   Unread = [];
   NotOb;
-  merchant = "";
+  merchant;
   productsOnSpecial;
   displayProducts= [];
   productsInBudget;
@@ -126,19 +126,21 @@ export class MerchantproductsPage {
     });
   }
   getProducts() {
-    let merchant = this.merchant;
+    console.log(this.merchant);
+    this.merchant;
     console.log("The merchant is");
-    console.log(merchant);
+    console.log(this.merchant);
 
-    /*if (merchant != null) {
-    firebase.database().ref('/Products/merchant').orderByChild('name').equalTo(merchant.name).once('value', async snapshot => {
+    if (this.merchant != null) {
+    firebase.database().ref('/Products/').orderByChild('merchant').equalTo(this.merchant.name).once('value', async snapshot => {
         this.productsOfMerchant = snapshot.val();
         this.displayProducts = [];
         for (const ob of Object.keys(snapshot.val())) {
-          this.displayProducts.push(this.productsInBudget[ob]);
+          console.log(ob)
+          this.displayProducts.push(this.productsOfMerchant[ob]);
         }
       }
     );
-  }*/
+  }
   }
 }

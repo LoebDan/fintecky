@@ -17,7 +17,7 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
   rootPage: any;
   public userProfile: any;
-  public isDriverShown = false;
+  public isDriverShown = true;
   public isPassShown = null;
   public isPartyShown = false;
   public isCreditsShown = null;
@@ -51,6 +51,7 @@ export class MyApp {
     });
     firebase.database().ref('/Merchants').once('value', async snapshot => {
         let mech = snapshot.val();
+        console.log(mech)
         this.merchant = [];
         for ( const ob of Object.keys(snapshot.val())) {
           this.merchant.push(mech[ob]);
@@ -172,22 +173,19 @@ export class MyApp {
   }
 
   loaddr(merch) {
-    this.nav.push(MerchantproductsPage, {
+    console.log(merch)
+    this.nav.setRoot('MerchantproductsPage', {
+      data: merch})
+    this.nav.push('MerchantproductsPage', {
       data: merch
     });
   }
 
-  loadGraph() {
-    this.nav.push(UserdataPage);
+  toggleDriver(){
+    this.isDriverShown = !this.isDriverShown;
   }
 
-  loadJeffsProducts() {
-    this.nav.push(DashboardPage, {
-      data: "Jeff's Place"
-    });
-  }
-
-  /*async checkdriver(userid){
+  async checkdriver(userid){
     // Check if the driver has registered
     this.userProfile = await firebase.database().ref(`/userProfile/${userid}/DriverID`).once("value");
     console.log(this.userProfile + " userprofile in app compo");
@@ -213,11 +211,7 @@ export class MyApp {
   }*/
 
 
-  toggleDriver(){
-    this.isDriverShown = !this.isDriverShown;
-  }
-
-  /*async checkparty(userid){
+  async checkparty(userid){
     // Check if the party exists
     firebase.database().ref(`/userProfile/${userid}/InParty`).on("value", async Snapshot => {
       // console.log(Snapshot + " Parties in app compo");
