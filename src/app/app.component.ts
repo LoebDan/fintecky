@@ -77,17 +77,17 @@ export class MyApp {
       { title: 'Login', name: 'LoginPage', component: 'LoginPage', icon: 'log-in'  }
     ];
 
-    this.passpages = [
+    /*this.passpages = [
       {title: 'Drivers Needing Passengers', name:'PassjoinridePage', component:'PassjoinridePage', icon: 'people'},
       {title: 'Leaving Now?', name: 'PassridenowPage', component: 'PassridenowPage', icon: 'car' },
       {title: 'Schedule a Ride', name: 'PassrideschedPage', component: 'PassrideschedPage', icon: 'map'  },
       {title: 'Your Rides Awaiting Driver Requests', name:'PassviewschedridePage', component:'PassviewschedridePage', icon: 'time'},
       {title: 'Your Future Rides', name:'PassengerviewpendingridesPage', component:'PassengerviewpendingridesPage', icon: 'timer'},
       {title: 'Your Past Rides', name:'PassengerviewpastridesPage', component:'PassengerviewpastridesPage', icon: 'checkbox'},
-    ];
+    ];*/
 
-    this.partypages = [
-    ];
+    /*this.partypages = [
+    ];*/
 
     this.events.subscribe('user:signup', () => {
       this.driverpages = [
@@ -108,8 +108,8 @@ export class MyApp {
       // this.menu.enable(false, 'loggedOutMenu');
       console.log(userId + " userID needed to change driver nav");
       this.CurUser = userId;
-      this.checkdriver(userId);
-      this.checkparty(userId);
+      /*this.checkdriver(userId);
+      this.checkparty(userId);*/
       this.getNotCount(userId);
       this.showMenu = true;
       this.rootPage = 'DashboardPage';
@@ -139,7 +139,7 @@ export class MyApp {
     });
 
     this.events.subscribe('user:party', () => {
-      this.checkparty(this.CurUser);
+     /* this.checkparty(this.CurUser);*/
     });
 
     platform.ready().then(() => {
@@ -177,13 +177,17 @@ export class MyApp {
     });
   }
 
+  loadGraph() {
+    this.nav.push(UserdataPage);
+  }
+
   loadJeffsProducts() {
     this.nav.push(DashboardPage, {
       data: "Jeff's Place"
     });
   }
 
-  async checkdriver(userid){
+  /*async checkdriver(userid){
     // Check if the driver has registered
     this.userProfile = await firebase.database().ref(`/userProfile/${userid}/DriverID`).once("value");
     console.log(this.userProfile + " userprofile in app compo");
@@ -206,14 +210,14 @@ export class MyApp {
         { title: 'Register as a Driver', name: 'DriverdetailsPage', component: 'DriverdetailsPage', icon: 'clipboard'  },
       ];
     }
-  }
+  }*/
 
 
   toggleDriver(){
     this.isDriverShown = !this.isDriverShown;
   }
 
-  async checkparty(userid){
+  /*async checkparty(userid){
     // Check if the party exists
     firebase.database().ref(`/userProfile/${userid}/InParty`).on("value", async Snapshot => {
       // console.log(Snapshot + " Parties in app compo");
@@ -233,7 +237,7 @@ export class MyApp {
         ];
       }
     });
-  }
+  }*/
 
   logOut(): void {
     this.authProvider.logoutUser().then(() => {
@@ -244,7 +248,7 @@ export class MyApp {
     });
   }
 
-  listenToLoginEvents() {
+  /*listenToLoginEvents() {
     this.events.subscribe('user:login', () => {
       this.enableMenu(true);
     });
@@ -256,7 +260,7 @@ export class MyApp {
     this.events.subscribe('user:logout', () => {
       this.enableMenu(false);
     });
-  }
+  }*/
   enableMenu(loggedIn: boolean) {
     this.menu.enable(loggedIn, 'loggedInMenu');
     // this.menu.enable(!loggedIn, 'loggedOutMenu');

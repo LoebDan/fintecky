@@ -29,8 +29,6 @@ export class DashboardPage {
   productsInBudget;
   productsOfMerchant;
 
-  RideOb = {};
-  RidesArray = [];
   location: {
     latitude: number,
     longitude: number

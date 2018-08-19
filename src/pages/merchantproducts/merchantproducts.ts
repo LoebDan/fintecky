@@ -130,7 +130,7 @@ export class MerchantproductsPage {
     console.log("The merchant is");
     console.log(merchant);
 
-    if (merchant != null) {
+    /*if (merchant != null) {
     firebase.database().ref('/Products/merchant').orderByChild('name').equalTo(merchant.name).once('value', async snapshot => {
         this.productsOfMerchant = snapshot.val();
         this.displayProducts = [];
@@ -139,6 +139,6 @@ export class MerchantproductsPage {
         }
       }
     );
-  }
+  }*/
   }
 }

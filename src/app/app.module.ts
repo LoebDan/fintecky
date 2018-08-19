@@ -30,6 +30,7 @@ import { QuicktopupPage} from "../pages/quicktopup/quicktopup";
 import { ViewnotificationsPage} from "../pages/viewnotifications/viewnotifications";
 import { RidesProvider } from '../providers/rides/rides';
 import {ChartDataProvider} from "../providers/chartdata/charts";
+import {UserdataPage} from "../pages/userdata/userdata";
 import {MerchantproductsPage} from "../pages/merchantproducts/merchantproducts";
 
 
@@ -51,8 +52,8 @@ import {MerchantproductsPage} from "../pages/merchantproducts/merchantproducts";
     JoinapartyPage,
     QuicktopupPage,
     ViewnotificationsPage,
-    MerchantproductsPage
-
+    MerchantproductsPage,
+    UserdataPage
   ],
   imports: [
     BrowserModule,
@@ -71,6 +72,7 @@ import {MerchantproductsPage} from "../pages/merchantproducts/merchantproducts";
         { component: ManageapartyPage, name: 'ManageapartyPage', segment: 'ManageapartyPage'},
         { component: JoinapartyPage, name: 'JoinapartyPage', segment: 'JoinapartyPage' },
         { component: ViewnotificationsPage, name: 'ViewnotificationsPage', segment: 'ViewnotificationsPage'},
+        { component: UserdataPage, name: 'UserdataPage', segment: 'UserdataPage'},
         ]
     }),
   ],
@@ -92,7 +94,8 @@ import {MerchantproductsPage} from "../pages/merchantproducts/merchantproducts";
     JoinapartyPage,
     QuicktopupPage,
     ViewnotificationsPage,
-    MerchantproductsPage
+    MerchantproductsPage,
+    UserdataPage
   ],
   providers: [
     StatusBar,
