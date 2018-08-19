@@ -20,18 +20,26 @@ export class ChartDataProvider {
   public allTransactions: Array<any>; //pulls all txs
 
   constructor() {
-  let myUID = firebase.auth().currentUser.uid;
-    console.log(myUID);
-       //this.myUID = user;
-    let Transactions = [];
+
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        let myUID = firebase.auth().currentUser.uid;
+        console.log(myUID);
+        //this.myUID = user;
+        let Transactions = [];
         firebase.database().ref(`/Clients/${myUID}`).once('value', snap => {
           let Client = snap.val();
 
+          try {
+            for (const ob of Object.keys(Client.transactions)) {
+              Transactions.push(ob);
+            }
+            console.log(Transactions);
+          } catch (e) {
+            console.log("ERROR");
 
-          for (const ob of Object.keys(Client.transactions)) {
-            Transactions.push(ob);
           }
-          console.log(Transactions);
+
 
 
           let today = Date.now();
@@ -42,11 +50,17 @@ export class ChartDataProvider {
           //let pastSevenDays = dayOfMonth-7;
           let dayOfWeek = new Date(today).getDay();
 
-          let dayOfWeekSA = dayOfWeek+8;
-          let lineChartWeekNumbers = Array.apply(null, Array(7)).map(Number.prototype.valueOf,0);
-          this.lineChartWeekLabels = Array.apply(null, Array(7)).map(String.prototype.valueOf,"")
+          this.lineChartMonthLabels = Array.apply(null, Array(dayOfMonth)).map(String.prototype.valueOf, "");
+
+          for (let i = 0; i < dayOfMonth; i++) {
+            this.lineChartMonthLabels[i] = i;
+          }
+
+          let dayOfWeekSA = dayOfWeek + 8;
+          let lineChartWeekNumbers = Array.apply(null, Array(7)).map(Number.prototype.valueOf, 0);
+          this.lineChartWeekLabels = Array.apply(null, Array(7)).map(String.prototype.valueOf, "")
           for (let i = 6; i >= 0; i--) {
-            lineChartWeekNumbers[i] = (i+dayOfWeekSA)%7;
+            lineChartWeekNumbers[i] = (i + dayOfWeekSA) % 7;
           }
 
           for (let i = 0; i < 7; i++) {
@@ -73,13 +87,13 @@ export class ChartDataProvider {
             }
           }
 
-          this.lineChartMonthData = Array.apply(null, Array(dayOfMonth)).map(Number.prototype.valueOf,0);
-          this.lineChartWeekData = Array.apply(null, Array(7)).map(Number.prototype.valueOf,0);
+          this.lineChartMonthData = Array.apply(null, Array(dayOfMonth)).map(Number.prototype.valueOf, 0);
+          this.lineChartWeekData = Array.apply(null, Array(7)).map(Number.prototype.valueOf, 0);
           console.log(todayReadable);
           console.log(dayOfMonth);
           console.log(dayOfWeekSA);
 
-          for (const ob of Transactions){
+          for (const ob of Transactions) {
             //console.log(ob.id);
             firebase.database().ref(`/Transactions`).orderByChild('id').equalTo(ob.toString()).once('value', snap => {
               console.log(snap.val());
@@ -93,12 +107,12 @@ export class ChartDataProvider {
                 console.log(SingularTransaction[ob2].value);
                 console.log(theday.getFullYear() + "vs" + yearToday + "and" + theday.getMonth() + "vs" + monthToday);
                 if (theday.getFullYear() == yearToday && theday.getMonth() == monthToday) {
-                  this.lineChartMonthData[theday.getDate()-1] += SingularTransaction[ob2].value;
+                  this.lineChartMonthData[theday.getDate() - 1] += SingularTransaction[ob2].value;
                   console.log(theday.getDate());
-                  console.log("hello" + this.lineChartMonthData[theday.getDate()-1]);
-                  console.log("hello" + this.lineChartMonthData[theday.getDate()-2]);
-                  if (theday.getDate() >= dayOfMonth-6) {
-                    this.lineChartWeekData[6-(dayOfMonth-theday.getDate())] += SingularTransaction[ob2].value;
+                  console.log("hello" + this.lineChartMonthData[theday.getDate() - 1]);
+                  console.log("hello" + this.lineChartMonthData[theday.getDate() - 2]);
+                  if (theday.getDate() >= dayOfMonth - 6) {
+                    this.lineChartWeekData[6 - (dayOfMonth - theday.getDate())] += SingularTransaction[ob2].value;
                     console.log(this.lineChartMonthData);
                     console.log(this.lineChartWeekData);
                     console.log(this.lineChartWeekLabels);
@@ -111,11 +125,12 @@ export class ChartDataProvider {
           }
 
         });
-    console.log(this.lineChartMonthData);
-    console.log(this.lineChartWeekData);
+        console.log(this.lineChartMonthData);
+        console.log(this.lineChartWeekData);
 
       }
-
+    })
+  }
   fetchWeekData() {
     return this.lineChartWeekData;
   }

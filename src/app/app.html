@@ -26,13 +26,12 @@
       </button>
       <ion-list *ngIf="isDriverShown">
 
-        <ion-item menuClose *ngFor="let p of driverpages" text-wrap class="drop" (click)="openPage(p.component)">
+        <ion-item menuClose *ngFor="let p of merchant" text-wrap class="drop" (click)="loaddr(p)">
 
 
           <h4>
-            {{p.title}}
+            {{p.name}}
           </h4>
-          <ion-icon color="gold" item-right [name]=p.icon></ion-icon>
         </ion-item>
       </ion-list>
       <ion-list >
