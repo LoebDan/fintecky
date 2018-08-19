@@ -38,9 +38,12 @@
           <ion-card-content style="align-items: center">
 
             <h2 style="color: #e8c355;">{{product.name}}</h2><span></span>
+
             <ion-col>
-            <img style="max-height: 100px; max-width: 100px; float: bottom" src={{product.image}} alt={{product.desc}}>
-            </ion-col>
+
+                <ion-card><img style="max-height: 100%; max-width: 100%" src={{product.image}} alt={{product.desc}}></ion-card>
+
+            </ion-col >
             <span></span>
             <p style="color: #e8c355;">{{product.desc}} for R {{product.price}}. </p>
             <button style="background-color: brown; color: white" (click)='placeOrder(product)' mat-button>ORDER</button>
