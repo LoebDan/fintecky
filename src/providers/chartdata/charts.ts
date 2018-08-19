@@ -8,7 +8,7 @@ import firebase from 'firebase';
 export class ChartDataProvider {
   public clientProfile: firebase.database.Reference;
   public lineChartMonthData;
-  public lineChartMonthLabels;
+  public lineChartMonthLabels: Array<any>;
   public lineChartWeekData;
   public lineChartWeekLabels;
 
@@ -140,9 +140,9 @@ export class ChartDataProvider {
   fetchMonthData() {
     return this .lineChartMonthData;
   }
-  fetchMonthLabels() : Promise<any> {
+
+  fetchMonthLabels() {
     return this.lineChartMonthLabels;
   }
-
 
 }
