@@ -5,7 +5,8 @@ import {
   IonicPage,
   Loading,
   LoadingController,
-  NavController
+  NavController,
+  
 } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EmailValidator } from '../../validators/email';
