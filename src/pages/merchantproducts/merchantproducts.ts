@@ -55,7 +55,7 @@ export class MerchantproductsPage {
   }
 
   async ionViewDidLoad(){
-
+    this.getProducts();
     await this.delay(1000).then(() => {
     });
   }
@@ -126,15 +126,19 @@ export class MerchantproductsPage {
     });
   }
   getProducts() {
-  let merchant = this.merchant;
+    let merchant = this.merchant;
+    console.log("The merchant is");
     console.log(merchant);
-    firebase.database().ref('/Products').orderByChild('merchant').equalTo(merchant).once('value', async snapshot => {
+
+    if (merchant != null) {
+    firebase.database().ref('/Products/merchant').orderByChild('name').equalTo(merchant.name).once('value', async snapshot => {
         this.productsOfMerchant = snapshot.val();
         this.displayProducts = [];
-        for ( const ob of Object.keys(snapshot.val())) {
+        for (const ob of Object.keys(snapshot.val())) {
           this.displayProducts.push(this.productsInBudget[ob]);
         }
       }
     );
+  }
   }
 }
