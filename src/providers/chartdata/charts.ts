@@ -8,7 +8,7 @@ import firebase from 'firebase';
 export class ChartDataProvider {
   public clientProfile: firebase.database.Reference;
   public lineChartMonthData;
-  public lineChartMonthLabels;
+  public lineChartMonthLabels: Array<any>;
   public lineChartWeekData;
   public lineChartWeekLabels;
 
@@ -41,12 +41,6 @@ export class ChartDataProvider {
           let dayOfMonth = new Date(today).getDate();
           //let pastSevenDays = dayOfMonth-7;
           let dayOfWeek = new Date(today).getDay();
-
-          this.lineChartMonthLabels = Array.apply(null, Array(dayOfMonth)).map(String.prototype.valueOf,"");
-
-          for (let i = 0; i < dayOfMonth; i++) {
-            this.lineChartMonthLabels[i] = i;
-          }
 
           let dayOfWeekSA = dayOfWeek+8;
           let lineChartWeekNumbers = Array.apply(null, Array(7)).map(Number.prototype.valueOf,0);
@@ -130,9 +124,6 @@ export class ChartDataProvider {
   }
   fetchMonthData() {
     return this .lineChartMonthData;
-  }
-  fetchMonthLabels() {
-    return this.lineChartMonthLabels;
   }
 
 
