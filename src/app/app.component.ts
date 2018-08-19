@@ -166,10 +166,15 @@ export class MyApp {
     });
   }
 
-  openPage(page) {
+  openPage() {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
-    this.nav.setRoot(page);
+    this.nav.setRoot('DashboardPage');
+  }
+  openPage1() {
+    // Reset the content nav to have just this page
+    // we wouldn't want the back button to show in this scenario
+    this.nav.setRoot('UserdataPage');
   }
 
   loaddr(merch) {
