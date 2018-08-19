@@ -30,11 +30,16 @@ export class ChartDataProvider {
         firebase.database().ref(`/Clients/${myUID}`).once('value', snap => {
           let Client = snap.val();
 
+          try {
+            for (const ob of Object.keys(Client.transactions)) {
+              Transactions.push(ob);
+            }
+            console.log(Transactions);
+          } catch (e) {
+            console.log("ERROR");
 
-          for (const ob of Object.keys(Client.transactions)) {
-            Transactions.push(ob);
           }
-          console.log(Transactions);
+
 
 
           let today = Date.now();
@@ -135,9 +140,9 @@ export class ChartDataProvider {
   fetchMonthData() {
     return this .lineChartMonthData;
   }
+
   fetchMonthLabels() {
     return this.lineChartMonthLabels;
   }
-
 
 }
