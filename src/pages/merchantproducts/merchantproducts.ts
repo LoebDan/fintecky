@@ -12,27 +12,20 @@ import {  NavController, NavParams } from 'ionic-angular';
  */
 
 @Component({
-  selector: 'page-dashboard',
-  templateUrl: 'dashboard.html',
+  selector: 'page-merchantproducts',
+  templateUrl: 'merchantproducts.html',
 })
-export class DashboardPage {
-  @ViewChild('map') mapElement: ElementRef;
-  @ViewChild('directionsPanel') directionsPanel: ElementRef;
-  map: any;
+export class MerchantproductsPage {
+
 
   public  Read = [];
   Unread = [];
   NotOb;
-  merchant = "";
+  merchant;
   productsOnSpecial;
   displayProducts= [];
   productsInBudget;
   productsOfMerchant;
-
-  location: {
-    latitude: number,
-    longitude: number
-  };
 
   public Balance: any;
   public userProfile: firebase.database.Reference;
@@ -45,7 +38,6 @@ export class DashboardPage {
   )
   {
     this.merchant = navParams.get('data');
-    this.getSpecials();
 
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
@@ -63,11 +55,8 @@ export class DashboardPage {
   }
 
   async ionViewDidLoad(){
-    this.location = {
-      latitude: -33.9321,
-      longitude: 18.8601
-    };
-    await this.delay(3000).then(() => {
+    this.getProducts();
+    await this.delay(1000).then(() => {
     });
   }
 
@@ -136,33 +125,22 @@ export class DashboardPage {
       firebase.database().ref(`/Clients/${UID}/balance`).set(temp);
     });
   }
+  getProducts() {
+    console.log(this.merchant);
+    this.merchant;
+    console.log("The merchant is");
+    console.log(this.merchant);
 
-  
-
-  getSpecials() {
-    firebase.database().ref('/Products').orderByChild('special').equalTo('T').once('value', async snapshot => {
-        this.productsOnSpecial = snapshot.val();
+    if (this.merchant != null) {
+    firebase.database().ref('/Products/').orderByChild('merchant').equalTo(this.merchant.name).once('value', async snapshot => {
+        this.productsOfMerchant = snapshot.val();
         this.displayProducts = [];
-        for ( const ob of Object.keys(snapshot.val())) {
-          this.displayProducts.push(this.productsOnSpecial[ob]);
-          console.log(ob);
-        }
-        console.log(snapshot.val());
-      }
-    );
-  }
-
-  budgetProducts (amount) {
-    let budget = parseInt(amount);
-    firebase.database().ref('/Products').orderByChild('price').endAt(budget).once('value', async snapshot => {
-       this.productsInBudget = snapshot.val();
-        this.displayProducts = [];
-        for ( const ob of Object.keys(snapshot.val())) {
-          this.displayProducts.push(this.productsInBudget[ob]);
+        for (const ob of Object.keys(snapshot.val())) {
+          console.log(ob)
+          this.displayProducts.push(this.productsOfMerchant[ob]);
         }
       }
     );
   }
-
-
+  }
 }

@@ -29,6 +29,9 @@ import { NotificationsProvider } from '../providers/notifications/notifications'
 import { QuicktopupPage} from "../pages/quicktopup/quicktopup";
 import { ViewnotificationsPage} from "../pages/viewnotifications/viewnotifications";
 import { RidesProvider } from '../providers/rides/rides';
+import {ChartDataProvider} from "../providers/chartdata/charts";
+import {UserdataPage} from "../pages/userdata/userdata";
+import {MerchantproductsPage} from "../pages/merchantproducts/merchantproducts";
 
 
 @NgModule({
@@ -49,7 +52,8 @@ import { RidesProvider } from '../providers/rides/rides';
     JoinapartyPage,
     QuicktopupPage,
     ViewnotificationsPage,
-
+    MerchantproductsPage,
+    UserdataPage
   ],
   imports: [
     BrowserModule,
@@ -68,6 +72,8 @@ import { RidesProvider } from '../providers/rides/rides';
         { component: ManageapartyPage, name: 'ManageapartyPage', segment: 'ManageapartyPage'},
         { component: JoinapartyPage, name: 'JoinapartyPage', segment: 'JoinapartyPage' },
         { component: ViewnotificationsPage, name: 'ViewnotificationsPage', segment: 'ViewnotificationsPage'},
+        { component: UserdataPage, name: 'UserdataPage', segment: 'UserdataPage'},
+        { component: MerchantproductsPage, name: 'MerchantproductsPage', segment: 'MerchantproductsPage'},
         ]
     }),
   ],
@@ -89,6 +95,8 @@ import { RidesProvider } from '../providers/rides/rides';
     JoinapartyPage,
     QuicktopupPage,
     ViewnotificationsPage,
+    MerchantproductsPage,
+    UserdataPage
   ],
   providers: [
     StatusBar,
@@ -104,7 +112,8 @@ import { RidesProvider } from '../providers/rides/rides';
     BalanceProvider,
     PartyProvider,
     NotificationsProvider,
-    RidesProvider
+    RidesProvider,
+    ChartDataProvider
   ]
 })
 export class AppModule {}

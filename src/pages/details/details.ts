@@ -50,7 +50,6 @@ export class DetailsPage {
       firstName: ['', Validators.compose([Validators.maxLength(30), Validators.minLength(2), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
       lastName: ['', Validators.compose([Validators.maxLength(30), Validators.minLength(2), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
       ContactNo: ['', Validators.compose([Validators.minLength(10), Validators.maxLength(10), Validators.required])],
-      ID: ['', Validators.compose([Validators.minLength(13), Validators.maxLength(13), Validators.required])],
     });
   }
 
@@ -63,19 +62,14 @@ export class DetailsPage {
     const firstName: string = this.detailsForm.value.firstName;
     const lastName: string = this.detailsForm.value.lastName;
     const ContactNo: number = this.detailsForm.value.ContactNo;
-    const ID: number = this.detailsForm.value.ID;
     firebase
       .database()
-      .ref(`/userProfile/${userId}`)
+      .ref(`/Clients/${userId}`)
       .update({
-        firstName: firstName,
-        lastName: lastName,
+        name: firstName,
+        surname: lastName,
         ContactNo: ContactNo,
-        ID: ID,
-        'HasFilledOutDetails': 'Yes',
-        'DriverID': 'HasNotRegisteredYet',
-        'InParty': "No",
-        'Balance': 0
+        'HasFilledOutDetails': 'Yes',                        
       }).then(() =>{
         this.events.publish('user:details', true);
       });

@@ -1,10 +1,14 @@
 import { Component, ViewChild } from '@angular/core';
-import { Events, MenuController, Nav, Platform } from 'ionic-angular';
+import {  Events, MenuController, Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import firebase from 'firebase';
 import { AuthProvider } from '../providers/auth/auth';
+import {DashboardPage} from "../pages/dashboard/dashboard";
+import {MerchantproductsPage} from "../pages/merchantproducts/merchantproducts";
+import {UserdataPage} from "../pages/userdata/userdata";
 // import {HomePage} from "../pages/home/home";
+
 
 @Component({
   templateUrl: 'app.html'
@@ -13,13 +17,14 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
   rootPage: any;
   public userProfile: any;
-  public isDriverShown = false;
+  public isDriverShown = true;
   public isPassShown = null;
   public isPartyShown = false;
   public isCreditsShown = null;
   public showMenu: any;
   public notCount;
   CurUser;
+  merchant = [];
 
   loggedOutPages: Array<{ title: string, name: string, component: any,  icon: string }>;
   driverpages: Array<{ title: string, name: string, component: any,  icon: string }>;
@@ -44,6 +49,17 @@ export class MyApp {
       storageBucket: 'tester-f1264.appspot.com',
       messagingSenderId: '1086749179711'
     });
+    firebase.database().ref('/Merchants').once('value', async snapshot => {
+        let mech = snapshot.val();
+        console.log(mech)
+        this.merchant = [];
+        for ( const ob of Object.keys(snapshot.val())) {
+          this.merchant.push(mech[ob]);
+          console.log(ob);
+        }
+        console.log(snapshot.val());
+      }
+    );
     this.rootPage = 'LoginPage';
     this.showMenu = false;
 
@@ -62,17 +78,17 @@ export class MyApp {
       { title: 'Login', name: 'LoginPage', component: 'LoginPage', icon: 'log-in'  }
     ];
 
-    this.passpages = [
+    /*this.passpages = [
       {title: 'Drivers Needing Passengers', name:'PassjoinridePage', component:'PassjoinridePage', icon: 'people'},
       {title: 'Leaving Now?', name: 'PassridenowPage', component: 'PassridenowPage', icon: 'car' },
       {title: 'Schedule a Ride', name: 'PassrideschedPage', component: 'PassrideschedPage', icon: 'map'  },
       {title: 'Your Rides Awaiting Driver Requests', name:'PassviewschedridePage', component:'PassviewschedridePage', icon: 'time'},
       {title: 'Your Future Rides', name:'PassengerviewpendingridesPage', component:'PassengerviewpendingridesPage', icon: 'timer'},
       {title: 'Your Past Rides', name:'PassengerviewpastridesPage', component:'PassengerviewpastridesPage', icon: 'checkbox'},
-    ];
+    ];*/
 
-    this.partypages = [
-    ];
+    /*this.partypages = [
+    ];*/
 
     this.events.subscribe('user:signup', () => {
       this.driverpages = [
@@ -93,8 +109,8 @@ export class MyApp {
       // this.menu.enable(false, 'loggedOutMenu');
       console.log(userId + " userID needed to change driver nav");
       this.CurUser = userId;
-      this.checkdriver(userId);
-      this.checkparty(userId);
+      /*this.checkdriver(userId);
+      this.checkparty(userId);*/
       this.getNotCount(userId);
       this.showMenu = true;
       this.rootPage = 'DashboardPage';
@@ -124,7 +140,7 @@ export class MyApp {
     });
 
     this.events.subscribe('user:party', () => {
-      this.checkparty(this.CurUser);
+     /* this.checkparty(this.CurUser);*/
     });
 
     platform.ready().then(() => {
@@ -150,22 +166,28 @@ export class MyApp {
     });
   }
 
-  openPage(page) {
+  openPage() {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
-    this.nav.setRoot(page);
+    this.nav.setRoot('DashboardPage');
+  }
+  openPage1() {
+    // Reset the content nav to have just this page
+    // we wouldn't want the back button to show in this scenario
+    this.nav.setRoot('UserdataPage');
+  }
+
+  loaddr(merch) {
+    console.log(merch)
+    this.nav.setRoot('MerchantproductsPage', {
+      data: merch})
+    this.nav.push('MerchantproductsPage', {
+      data: merch
+    });
   }
 
   toggleDriver(){
     this.isDriverShown = !this.isDriverShown;
-  }
-
-  togglePass(){
-    this.isPassShown = !this.isPassShown;
-  }
-
-  toggleParty(){
-    this.isPartyShown = !this.isPartyShown;
   }
 
   async checkdriver(userid){
