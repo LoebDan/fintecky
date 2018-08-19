@@ -209,6 +209,10 @@ export class MyApp {
   }
 
 
+  toggleDriver(){
+    this.isDriverShown = !this.isDriverShown;
+  }
+
   async checkparty(userid){
     // Check if the party exists
     firebase.database().ref(`/userProfile/${userid}/InParty`).on("value", async Snapshot => {
