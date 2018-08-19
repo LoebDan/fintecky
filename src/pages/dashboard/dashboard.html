@@ -23,8 +23,9 @@
         <ion-card-content>
           <p style="color: #C0C0C0"> My budget is R</p>
           <ion-input type="number" style="background-color: #666666" class="form-control" min="0" max="99"
-                      (ionChange)='budgetProducts($event.value)'>
+                      [(ngModel)]="amount">
           </ion-input>
+          <button style="background-color: forestgreen" (click)='budgetProducts(amount)'>GO!</button>>
         </ion-card-content>
       </ion-card>
     </ion-row>

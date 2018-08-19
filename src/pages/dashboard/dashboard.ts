@@ -22,6 +22,7 @@ export class DashboardPage {
   public  Read = [];
   Unread = [];
   NotOb;
+  amount;
 
   myUID = 'asdadUID';
   merchant = {name : 'Jeff\'s Place'};
@@ -118,9 +119,9 @@ export class DashboardPage {
     );
   }
 
-  budgetProducts (budget) {
-    budget = parseInt(budget)
-    console.log("budget by " + budget + " type " + budget.type);
+  //@ViewChild('teste') input;
+  budgetProducts (amount) {
+    let budget = parseInt(amount);
     firebase.database().ref('/Products').orderByChild('price').endAt(budget).once('value', async snapshot => {
        this.productsInBudget = snapshot.val();
         this.displayProducts = [];
@@ -128,8 +129,7 @@ export class DashboardPage {
           this.displayProducts.push(this.productsInBudget[ob]);
         }
          console.log('Products in Budget');
-        console.log(this.displayProducts);
-        //setTimeout(() => { this.loadingIndicator = false; }, 1500);
+        console.log(this.displayProducts)
       }
     );
 
