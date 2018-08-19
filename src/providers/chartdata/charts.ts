@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import firebase from 'firebase';
-import { Events } from 'ionic-angular';
+//import { Events } from 'ionic-angular';
 
-import {User} from '@firebase/auth-types';
+//import {User} from '@firebase/auth-types';
 
 @Injectable()
 export class ChartDataProvider {
@@ -39,17 +39,17 @@ export class ChartDataProvider {
           let yearToday = new Date(today).getFullYear();
           let monthToday = new Date(today).getMonth();
           let dayOfMonth = new Date(today).getDate();
-          let pastSevenDays = dayOfMonth-7;
+          //let pastSevenDays = dayOfMonth-7;
           let dayOfWeek = new Date(today).getDay();
 
           let dayOfWeekSA = dayOfWeek+8;
           let lineChartWeekNumbers = Array.apply(null, Array(7)).map(Number.prototype.valueOf,0);
           this.lineChartWeekLabels = Array.apply(null, Array(7)).map(String.prototype.valueOf,"")
-          for (var i = 6; i >= 0; i--) {
+          for (let i = 6; i >= 0; i--) {
             lineChartWeekNumbers[i] = (i+dayOfWeekSA)%7;
           }
 
-          for (var i =0; i < 7; i++) {
+          for (let i = 0; i < 7; i++) {
             if (lineChartWeekNumbers[i] == 0) {
               this.lineChartWeekLabels[i] = "Sunday";
             }
@@ -87,7 +87,7 @@ export class ChartDataProvider {
               for (const ob2 of Object.keys(SingularTransaction)) {
                 console.log(SingularTransaction);
                 console.log("DAY EPOCH" + SingularTransaction[ob2].time);
-                let currday = SingularTransaction[ob2].time;
+                //let currday = SingularTransaction[ob2].time;
                 let theday = new Date(SingularTransaction[ob2].time);
                 console.log("THE DAY" + theday);
                 console.log(SingularTransaction[ob2].value);
