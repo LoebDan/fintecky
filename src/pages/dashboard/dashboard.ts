@@ -99,8 +99,9 @@ export class DashboardPage {
     let ref = firebase.database().ref(`/Transactions`);
     let productID = product.id
     let date = (new Date).getTime();
+    let UID = firebase.auth().currentUser.uid;
     let json ={
-      "clientID" : this.myUID,
+      "clientID" : UID,
       "complete" : false,
       "id" : "aa",
       "merchantID" : product.merchant,
@@ -112,20 +113,28 @@ export class DashboardPage {
         }
       }
     };
-    
+    let storeKey;
     ref.push(json ).once('value', async snapshot => {
       
-      let key = snapshot.key
-      firebase.database().ref(`/Transactions/${key}/id`).set(key);
+       storeKey = snapshot.key
+      firebase.database().ref(`/Transactions/${storeKey}/id`).set(storeKey);
     });
+    let data = {[storeKey]: {
+      "id" : storeKey
+    }}
+    firebase.database().ref(`/Clients/${UID}/transactions`).update(data);
+    firebase.database().ref(`/Merchants/${product.merchant}/transactions`).update(data);
+    console.log(UID)
    }
   placeOrder(product) {
     console.log(product);
+    let UID = firebase.auth().currentUser.uid;
+
     this.createTransaction(product);
-    firebase.database().ref(`/Clients/${this.myUID}/balance`).once('value', async snapshot => {
+    firebase.database().ref(`/Clients/${UID}/balance`).once('value', async snapshot => {
       let temp = snapshot.val();
       temp -= product.price;
-      firebase.database().ref(`/Clients/${this.myUID}/balance`).set(temp);
+      firebase.database().ref(`/Clients/${UID}/balance`).set(temp);
     });
   }
 
