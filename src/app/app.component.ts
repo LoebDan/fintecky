@@ -6,7 +6,7 @@ import firebase from 'firebase';
 import { AuthProvider } from '../providers/auth/auth';
 import {DashboardPage} from "../pages/dashboard/dashboard";
 import {MerchantproductsPage} from "../pages/merchantproducts/merchantproducts";
-import {UserdataPage} from "../pages/userdata/userdata";
+// import {UserdataPage} from "../pages/userdata/userdata";
 // import {HomePage} from "../pages/home/home";
 
 

@@ -4,7 +4,7 @@ import { UserdataPage } from './userdata';
 
 @NgModule({
   declarations: [
-    UserdataPage,
+    //UserdataPage,
   ],
   imports: [
     IonicPageModule.forChild(UserdataPage),
