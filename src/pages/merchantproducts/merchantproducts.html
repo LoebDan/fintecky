@@ -14,32 +14,32 @@
 
 
 <ion-content padding>
-
   <ion-grid >
-    <ion-row justify-content-center align-items-center style="height: 100%">
 
-      <ion-card padding class="card">
-        <ion-card-header style="color: #ffa100;">Set budget and search for meals: </ion-card-header>
-        <ion-card-content>
-          <p style="color: #C0C0C0"> My budget is R</p>
-          <ion-input type="number" style="background-color: #666666" class="form-control" min="0" max="99"
-                      [(ngModel)]="amount">
-          </ion-input>
-          <button style="background-color: forestgreen" (click)='budgetProducts(amount)'>GO!</button>>
-        </ion-card-content>
-      </ion-card>
-    </ion-row>
+  <ion-row justify-content-center align-items-center style="height: 100%">
+
+    <ion-card padding class="card">
+      <ion-card-header style="color: #e8c355;">Set budget and search for meals: </ion-card-header>
+      <ion-card-content style="align-content: center">
+        <p style="color: #C0C0C0"> My budget is R</p>
+        <ion-input type="number" style="background-color: #666666;margin:10px; padding: 5px; border-radius: 5px" class="form-control" min="0" max="99"
+                   [(ngModel)]="amount">
+        </ion-input>
+        <button style="background-color:  #e8c355; font-size : 16pt; padding: 5px; border-radius: 5px" (click)='budgetProducts(amount)'>Set budget</button>
+      </ion-card-content>
+    </ion-card>
+  </ion-row>
 
     <ion-row justify-content-center align-items-center style="height: 100%">
       <!-- Current Specials -->
       <ion-card padding class="card">
-        <h1 class="headings" style="color: #ffa100;"> Today's Specials </h1>
+        <h1 class="headings" style="color: #e8c355;"> Today's Specials </h1>
         <ion-card *ngFor="let product of displayProducts">
-          <ion-card-header style="color: #ffa100;">{{product.merchant}}</ion-card-header>
+          <ion-card-header style="color: #e8c355;">{{product.merchant}}</ion-card-header>
           <ion-card-content>
-            <h2 style="color: #ffa100;">{{product.name}}</h2>
+            <h2 style="color: #e8c355;">{{product.name}}</h2>
             <img style="max-height: 100px; max-width: 100px" src={{product.image}} alt={{product.desc}}>
-            <p style="color: #ffa100;">{{product.desc}} for R {{product.price}}. </p>
+            <p style="color: #e8c355;">{{product.desc}} for R {{product.price}}. </p>
             <button style="background-color: brown; color: white" (click)='placeOrder(product)' mat-button>ORDER</button>
           </ion-card-content>
         </ion-card>

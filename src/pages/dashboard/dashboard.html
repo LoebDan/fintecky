@@ -19,8 +19,8 @@
     <ion-row justify-content-center align-items-center style="height: 100%">
 
       <ion-card padding class="card">
-        <ion-card-header style="color: #e8c355;">Set budget and search for meals: </ion-card-header>
-        <ion-card-content>
+        <ion-card-header style="color: #e8c355; text-align: justify">Set budget and search for meals: </ion-card-header>
+        <ion-card-content style="align-content: center">
           <p style="color: #C0C0C0"> My budget is R</p>
           <ion-input type="number" style="background-color: #666666;margin:10px; padding: 5px; border-radius: 5px" class="form-control" min="0" max="99"
                       [(ngModel)]="amount">
@@ -36,9 +36,12 @@
         <h1 class="headings" style="color: #e8c355;"> Today's Specials </h1>
         <ion-card *ngFor="let product of displayProducts">
           <ion-card-header style="color: #e8c355;">{{product.merchant}}</ion-card-header>
-          <ion-card-content>
-            <h2 style="color: #e8c355;">{{product.name}}</h2>
-            <img style="max-height: 100px; max-width: 100px" src={{product.image}} alt={{product.desc}}>
+          <ion-card-content style="align-items: center">
+            <h2 style="color: #e8c355;">{{product.name}}</h2><span></span>
+            <p>
+            <img style="max-height: 100px; max-width: 100px; float: bottom" src={{product.image}} alt={{product.desc}}>
+            </p>
+            <span></span>
             <p style="color: #e8c355;">{{product.desc}} for R {{product.price}}. </p>
             <button style="background-color: brown; color: white" (click)='placeOrder(product)' mat-button>ORDER</button>
           </ion-card-content>
