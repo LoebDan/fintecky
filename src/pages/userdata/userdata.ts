@@ -32,7 +32,7 @@ export class UserdataPage {
       data: {
         labels: this.chartdata.fetchWeekLabels(),
         datasets: [{
-          label: '# of Votes',
+          label: 'Week Spending',
           data: this.chartdata.fetchWeekData(),
           backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
@@ -71,7 +71,7 @@ export class UserdataPage {
       data: {
         labels: this.chartdata.fetchMonthLabels(),
         datasets: [{
-          label: '# of Votes',
+          label: 'Month Spending',
           data: this.chartdata.fetchMonthData(),
           backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
