@@ -10,6 +10,7 @@ import {
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EmailValidator } from '../../validators/email';
 import { AuthProvider } from '../../providers/auth/auth';
+import { ChartDataProvider } from '../../providers/chartdata/charts';
 
 /**
  * Generated class for the LoginPage page.
@@ -34,6 +35,7 @@ export class LoginPage {
     public loadingCtrl: LoadingController,
     public alertCtrl: AlertController,
     public authProvider: AuthProvider,
+    public chartsProvider: ChartDataProvider,
     formBuilder: FormBuilder
   ) {
     this.loginForm = formBuilder.group({
