@@ -1,7 +1,7 @@
-/*
-$font-path: "../assets/fonts";
 
-$app-direction: ltr;
+//$font-path: "../assets/fonts";
+
+//$app-direction: ltr;
 
 $colors: (
   primary:    #e8c355,
@@ -13,9 +13,9 @@ $colors: (
   gold:       #e8c355,
 );
 
-$background-color: linear-gradient(#222, #666666);
-$text-input-highlight-color-valid: #666666;
-$text-input-ios-highlight-color: #666666;
+//$background-color: linear-gradient(#222, #666666);
+//$text-input-highlight-color-valid: #666666;
+//$text-input-ios-highlight-color: #666666;
 
 ion-content{
   background-color: #2d2d2d;
@@ -92,16 +92,12 @@ h2{
 }
 
 .toolbar-background {
-  background: linear-gradient(#343434, #222);
+  background: linear-gradient(#5d90e2, #222);
 }
+.ion-navbar{
+  background: linear-gradient(#5d90e2, #222);
 
-$toolbar-ios-background: dark-grey;
-$toolbar-md-background: dark-grey;
-$toolbar-wp-background: dark-grey;
-
-$toolbar-md-title-text-color: #e8c355;
-$toolbar-ios-title-text-color: #e8c355;
-$toolbar-wp-title-text-color: #e8c355;
+}
 
 .scroll-bar-indicator
 {
@@ -114,4 +110,9 @@ $toolbar-wp-title-text-color: #e8c355;
 
 
 
-*/
+// The path for our ionicons font files, relative to the built CSS in www/css
+$ionicons-font-path: "../lib/ionic/fonts" !default;
+
+// Include all of Ionic
+@import "../assets/scss/ionic";
+
