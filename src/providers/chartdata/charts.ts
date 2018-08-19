@@ -17,12 +17,10 @@ export class ChartDataProvider {
   public transactionValues: Array<any>;
   public userBalance;
 
-
-
   public allTransactions: Array<any>; //pulls all txs
 
   constructor() {
-  let myUID = 'anything';
+  let myUID = firebase.auth().currentUser.uid;
     console.log(myUID);
        //this.myUID = user;
     let Transactions = [];
@@ -75,8 +73,6 @@ export class ChartDataProvider {
             }
           }
 
-
-
           this.lineChartMonthData = Array.apply(null, Array(dayOfMonth)).map(Number.prototype.valueOf,0);
           this.lineChartWeekData = Array.apply(null, Array(7)).map(Number.prototype.valueOf,0);
           console.log(todayReadable);
@@ -118,20 +114,7 @@ export class ChartDataProvider {
     console.log(this.lineChartMonthData);
     console.log(this.lineChartWeekData);
 
-
-
-        /*this.allTransactions = firebase.database().ref.child(`Transactions`).orderByChild('clientID').equalTo(`${this.myUID}`).on("value", function(snapshot) {
-          console.log(snapshot.val());
-          snapshot.forEach(function(data) {
-            console.log(data.key);
-          })
-        })*/
-
-
       }
-
-
-
 
   fetchWeekData() {
     return this.lineChartWeekData;
