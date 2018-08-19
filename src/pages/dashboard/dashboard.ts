@@ -1,7 +1,7 @@
 import firebase from 'firebase';
 import { AuthProvider } from '../../providers/auth/auth';
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 
 /**
@@ -10,7 +10,7 @@ import { NavController, NavParams } from 'ionic-angular';
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-
+@IonicPage
 @Component({
   selector: 'page-dashboard',
   templateUrl: 'dashboard.html',
@@ -26,10 +26,11 @@ export class DashboardPage {
   amount;
 
   myUID = 'asdadUID';
-  merchant = {name : 'Jeff\'s Place'};
+  merchant = "";
   productsOnSpecial;
   displayProducts= [];
   productsInBudget;
+  productsOfMerchant;
 
   RideOb = {};
   RidesArray = [];
@@ -48,7 +49,9 @@ export class DashboardPage {
     public authProvider: AuthProvider,
   )
   {
+    this.merchant = navParams.get('data');
     this.getSpecials();
+
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         console.log(user.uid);
@@ -143,7 +146,6 @@ export class DashboardPage {
     );
   }
 
-  //@ViewChild('teste') input;
   budgetProducts (amount) {
     let budget = parseInt(amount);
     firebase.database().ref('/Products').orderByChild('price').endAt(budget).once('value', async snapshot => {
@@ -152,10 +154,19 @@ export class DashboardPage {
         for ( const ob of Object.keys(snapshot.val())) {
           this.displayProducts.push(this.productsInBudget[ob]);
         }
-         console.log('Products in Budget');
-        console.log(this.displayProducts)
       }
     );
+  }
 
+  getProducts() {
+  let merchant = this.merchant;
+    firebase.database().ref('/Products').orderByChild('merchant').equalTo(merchant).once('value', async snapshot => {
+        this.productsOfMerchant = snapshot.val();
+        this.displayProducts = [];
+        for ( const ob of Object.keys(snapshot.val())) {
+          this.displayProducts.push(this.productsInBudget[ob]);
+        }
+      }
+    );
   }
 }
