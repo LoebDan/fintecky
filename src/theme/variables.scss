@@ -1,28 +1,114 @@
+// Ionic Variables and Theming. For more info, please see:
+// http://ionicframework.com/docs/theming/
 
-//$font-path: "../assets/fonts";
+// Font path is used to include ionicons,
+// roboto, and noto sans fonts
+$font-path: "../assets/fonts";
 
-//$app-direction: ltr;
+
+// The app direction is used to include
+// rtl styles in your app. For more info, please see:
+// http://ionicframework.com/docs/theming/rtl-support/
+$app-direction: ltr;
+
+
+@import "ionic.globals";
+
+
+// Shared Variables
+// --------------------------------------------------
+// To customize the look and feel of this app, you can override
+// the Sass variables found in Ionic's source scss files.
+// To view all the possible Ionic variables, see:
+// http://ionicframework.com/docs/theming/overriding-ionic-variables/
+
+
+
+
+// Named Color Variables
+// --------------------------------------------------
+// Named colors makes it easy to reuse colors on various components.
+// It's highly recommended to change the default colors
+// to match your app's branding. Ionic uses a Sass map of
+// colors so you can add, rename and remove colors as needed.
+// The "primary" color is the only required color in the map.
+
 
 $colors: (
-  primary:    #e8c355,
-  secondary:  #32db64,
+  primary:    black,
+  secondary:  black,
   danger:     #f53d3d,
-  light:      #70685c,
-  dark-grey:  (base: #343434, contrast: #222),
+  light:      #918b8b,
+  dark-grey:  (base: #918b8b, contrast: #565656),
   grey:       #343434,
-  gold:       #e8c355,
 );
 
-//$background-color: linear-gradient(#222, #666666);
-//$text-input-highlight-color-valid: #666666;
-//$text-input-ios-highlight-color: #666666;
 
+// App iOS Variables
+// --------------------------------------------------
+// iOS only Sass variables can go here
+
+
+
+
+// App Material Design Variables
+// --------------------------------------------------
+// Material Design only Sass variables can go here
+
+
+
+
+// App Windows Variables
+// --------------------------------------------------
+// Windows only Sass variables can go here
+
+
+
+
+// App Theme
+// --------------------------------------------------
+// Ionic apps can have different themes applied, which can
+// then be future customized. This import comes last
+// so that the above variables are used and Ionic's
+// default are overridden.
+
+@import "ionic.theme.default";
+$background-color: linear-gradient(#918b8b, #565656);
+$text-input-highlight-color-valid: #565656;
+$text-input-ios-highlight-color: #565656;
+
+
+// Ionicons
+// --------------------------------------------------
+// The premium icon font for Ionic. For more info, please see:
+// http://ionicframework.com/docs/ionicons/
+
+@import "ionic.ionicons";
+
+
+// Fonts
+// --------------------------------------------------
+
+@import "roboto";
+@import "noto-sans";
+
+//Customising
 ion-content{
-  background-color: #2d2d2d;
-  color: #2d2d2d;
+  background: linear-gradient(#565656, #918b8b, #565656);
+  color: black;
   justify-content: center;
 }
+ion-item{
+  //border-top-left-radius: 5px;
+  //border-top-right-radius: 5px;
+  //border-bottom-left-radius: 5px;
+  //border-bottom-right-radius: 5px;
+  //margin: 5px;
+}
 
+ion-card-content{
+  //border-radius: 10px 10px 10px 10px;
+}
 ion-card {
   position: relative;
   display: block;
@@ -30,10 +116,10 @@ ion-card {
   alignment: center;
 
   border-radius: 10px;
-  border: 1.5px solid #e8c355;
-  background: #666666;
+  border: 1.5px solid #565656;
+  background: #918b8b;
   max-width: 600px;
-  color: #C0C0C0;
+  color: black;
   text-align: center;
 }
 
@@ -47,21 +133,26 @@ ion-card-header{
 }
 
 h1{
-  color: #e8c355;
+  color: black;
 }
 
 h2{
-  color: #e8c355;
+  color:  black;
 }
 
 h3{
-  color: #e8c355;
+  color:  black;
 }
 
 
 p{
-  color: #e8c355;
+  color:  black;
 }
+
+//div.table{
+//  border: 1.5px solid rgb(178, 175, 169);
+//
+//}
 
 div.table.ion-col{
   border: 1.5px solid rgb(178, 175, 169);
@@ -71,33 +162,45 @@ div.table.ion-col{
   border-radius: 50%;
 }
 
-.menu-row {
-  background: linear-gradient(#222, #666666);
+#menu-row {
+  background:  #a5adba;
 }
 
-.drop {
-  background: linear-gradient(#222, #444442);
+#drop {
+  background: #b6bdc6;
 }
 
 h4{
-  color: #e8c355;
+  color:black;
 }
 
 h2{
-  color: #e8c355;
+  color: #222;
 }
 
-#menu-content {
-  background: linear-gradient(#222, #222);
+
+ion-item#menu-row {
+  background: #b6bdc6;
+}
+
+menu-content {
+  background:  #918b8b;
 }
 
 .toolbar-background {
-  background: linear-gradient(#5d90e2, #222);
+  background: linear-gradient(#918b8b, #565656);
 }
-.ion-navbar{
-  background: linear-gradient(#5d90e2, #222);
+.ion-row{
+  background: #a5adba
+}
 
-}
+$toolbar-ios-background: dark-grey;
+$toolbar-md-background: dark-grey;
+$toolbar-wp-background: dark-grey;
+
+$toolbar-md-title-text-color: black;
+$toolbar-ios-title-text-color: black;
+$toolbar-wp-title-text-color: black;
 
 .scroll-bar-indicator
 {
@@ -109,10 +212,4 @@ h2{
 }
 
 
-
-// The path for our ionicons font files, relative to the built CSS in www/css
-$ionicons-font-path: "../lib/ionic/fonts" !default;
-
-// Include all of Ionic
-@import "../assets/scss/ionic";
 
