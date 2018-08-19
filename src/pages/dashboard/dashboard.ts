@@ -1,7 +1,7 @@
 import firebase from 'firebase';
 import { AuthProvider } from '../../providers/auth/auth';
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import {  NavController, NavParams } from 'ionic-angular';
+import {AlertController, NavController, NavParams} from 'ionic-angular';
 
 
 /**
@@ -42,6 +42,7 @@ export class DashboardPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public authProvider: AuthProvider,
+    public alertCtrl: AlertController
   )
   {
     this.merchant = navParams.get('data');
@@ -114,7 +115,7 @@ export class DashboardPage {
     };
     let storeKey;
     ref.push(json ).once('value', async snapshot => {
-      
+
        storeKey = snapshot.key
       firebase.database().ref(`/Transactions/${storeKey}/id`).set(storeKey);
     });
@@ -135,9 +136,14 @@ export class DashboardPage {
       temp -= product.price;
       firebase.database().ref(`/Clients/${UID}/balance`).set(temp);
     });
+    const alert = this.alertCtrl.create({
+      title: 'Order has been placed!',
+      buttons: ['Okay'],
+    });
+    alert.present();
   }
 
-  
+
 
   getSpecials() {
     firebase.database().ref('/Products').orderByChild('special').equalTo('T').once('value', async snapshot => {
