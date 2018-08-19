@@ -8,7 +8,7 @@ import firebase from 'firebase';
 export class ChartDataProvider {
   public clientProfile: firebase.database.Reference;
   public lineChartMonthData;
-  public lineChartMonthLabels: Array<any>;
+  public lineChartMonthLabels;
   public lineChartWeekData;
   public lineChartWeekLabels;
 
