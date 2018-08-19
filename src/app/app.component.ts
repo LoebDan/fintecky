@@ -17,7 +17,7 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
   rootPage: any;
   public userProfile: any;
-  public isDriverShown = false;
+  public isDriverShown = true;
   public isPassShown = null;
   public isPartyShown = false;
   public isCreditsShown = null;
@@ -51,6 +51,7 @@ export class MyApp {
     });
     firebase.database().ref('/Merchants').once('value', async snapshot => {
         let mech = snapshot.val();
+        console.log(mech)
         this.merchant = [];
         for ( const ob of Object.keys(snapshot.val())) {
           this.merchant.push(mech[ob]);
@@ -172,16 +173,19 @@ export class MyApp {
   }
 
   loaddr(merch) {
-    this.nav.push(MerchantproductsPage, {
+    console.log(merch)
+    this.nav.setRoot('MerchantproductsPage', {
+      data: merch})
+    this.nav.push('MerchantproductsPage', {
       data: merch
     });
   }
 
-  loadJeffsProducts() {
-    this.nav.push(DashboardPage, {
-      data: "Jeff's Place"
-    });
+  toggleDriver(){
+    this.isDriverShown = !this.isDriverShown;
   }
+
+
 
   async checkdriver(userid){
     // Check if the driver has registered
@@ -208,10 +212,6 @@ export class MyApp {
     }
   }
 
-
-  toggleDriver(){
-    this.isDriverShown = !this.isDriverShown;
-  }
 
   async checkparty(userid){
     // Check if the party exists
