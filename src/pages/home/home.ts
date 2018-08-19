@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import firebase from 'firebase';
 import { User } from '@firebase/auth-types';
 
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -35,6 +36,7 @@ export class HomePage {
     this.isSafetyShown = false;
 
   }
+
 
   ionViewDidLoad() {
     console.log(' y you do dis');

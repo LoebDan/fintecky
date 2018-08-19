@@ -1,10 +1,12 @@
 import { Component, ViewChild } from '@angular/core';
-import { Events, MenuController, Nav, Platform } from 'ionic-angular';
+import { NavController, Events, MenuController, Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import firebase from 'firebase';
 import { AuthProvider } from '../providers/auth/auth';
+import {DashboardPage} from "../pages/dashboard/dashboard";
 // import {HomePage} from "../pages/home/home";
+
 
 @Component({
   templateUrl: 'app.html'
@@ -33,7 +35,8 @@ export class MyApp {
     statusBar: StatusBar,
     splashScreen: SplashScreen,
     public menu: MenuController,
-    public events: Events
+    public events: Events,
+    public navCtrl: NavController
   ) {
 
     firebase.initializeApp({
@@ -156,16 +159,16 @@ export class MyApp {
     this.nav.setRoot(page);
   }
 
-  toggleDriver(){
-    this.isDriverShown = !this.isDriverShown;
+  loadDCMProducts() {
+    this.navCtrl.push(DashboardPage, {
+      data: "DCM"
+    });
   }
 
-  togglePass(){
-    this.isPassShown = !this.isPassShown;
-  }
-
-  toggleParty(){
-    this.isPartyShown = !this.isPartyShown;
+  loadJeffsProducts() {
+    this.navCtrl.push(DashboardPage, {
+      data: "Jeff's Place"
+    });
   }
 
   async checkdriver(userid){

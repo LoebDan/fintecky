@@ -1,7 +1,8 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
 import firebase from 'firebase';
-import {AuthProvider} from "../../providers/auth/auth";
+import { AuthProvider } from '../../providers/auth/auth';
+import { Component, ElementRef, ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
+
 
 /**
  * Generated class for the DashboardPage page.
@@ -9,7 +10,7 @@ import {AuthProvider} from "../../providers/auth/auth";
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-
+@IonicPage
 @Component({
   selector: 'page-dashboard',
   templateUrl: 'dashboard.html',
@@ -24,10 +25,11 @@ export class DashboardPage {
   NotOb;
 
   myUID = 'asdadUID';
-  merchant = {name : 'Jeff\'s Place'};
+  merchant = "";
   productsOnSpecial;
   displayProducts= [];
   productsInBudget;
+  productsOfMerchant;
 
   RideOb = {};
   RidesArray = [];
@@ -46,7 +48,9 @@ export class DashboardPage {
     public authProvider: AuthProvider,
   )
   {
+    this.merchant = navParams.get('data');
     this.getSpecials();
+
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         console.log(user.uid);
@@ -94,16 +98,50 @@ export class DashboardPage {
   delay(ms: number) {
     return new Promise( resolve => setTimeout(resolve, ms) );
   }
-
+  createTransaction(product) {
+    let ref = firebase.database().ref(`/Transactions`);
+    let productID = product.id
+    let date = (new Date).getTime();
+    let UID = firebase.auth().currentUser.uid;
+    let json ={
+      "clientID" : UID,
+      "complete" : false,
+      "id" : "aa",
+      "merchantID" : product.merchant,
+      "time" : date,
+      "value" : product.price,
+      "products" : {
+        [productID]: {
+          "id" : product.id
+        }
+      }
+    };
+    let storeKey;
+    ref.push(json ).once('value', async snapshot => {
+      
+       storeKey = snapshot.key
+      firebase.database().ref(`/Transactions/${storeKey}/id`).set(storeKey);
+    });
+    let data = {[storeKey]: {
+      "id" : storeKey
+    }}
+    firebase.database().ref(`/Clients/${UID}/transactions`).update(data);
+    firebase.database().ref(`/Merchants/${product.merchant}/transactions`).update(data);
+    console.log(UID)
+   }
   placeOrder(product) {
     console.log(product);
+    let UID = firebase.auth().currentUser.uid;
 
-    firebase.database().ref(`/Clients/${this.myUID}/balance`).once('value', async snapshot => {
+    this.createTransaction(product);
+    firebase.database().ref(`/Clients/${UID}/balance`).once('value', async snapshot => {
       let temp = snapshot.val();
       temp -= product.price;
-      firebase.database().ref(`/Clients/${this.myUID}/balance`).set(temp);
+      firebase.database().ref(`/Clients/${UID}/balance`).set(temp);
     });
   }
+
+  
 
   getSpecials() {
     firebase.database().ref('/Products').orderByChild('special').equalTo('T').once('value', async snapshot => {
@@ -117,21 +155,28 @@ export class DashboardPage {
       }
     );
   }
-
-  budgetProducts (budget) {
-    budget = parseInt(budget)
-    console.log("budget by " + budget + " type " + budget.type);
+  
+  budgetProducts (amount) {
+    let budget = parseInt(amount);
     firebase.database().ref('/Products').orderByChild('price').endAt(budget).once('value', async snapshot => {
        this.productsInBudget = snapshot.val();
         this.displayProducts = [];
         for ( const ob of Object.keys(snapshot.val())) {
           this.displayProducts.push(this.productsInBudget[ob]);
         }
-         console.log('Products in Budget');
-        console.log(this.displayProducts);
-        //setTimeout(() => { this.loadingIndicator = false; }, 1500);
       }
     );
+  }
 
+  getProducts() {
+  let merchant = this.merchant;
+    firebase.database().ref('/Products').orderByChild('merchant').equalTo(merchant).once('value', async snapshot => {
+        this.productsOfMerchant = snapshot.val();
+        this.displayProducts = [];
+        for ( const ob of Object.keys(snapshot.val())) {
+          this.displayProducts.push(this.productsInBudget[ob]);
+        }
+      }
+    );
   }
 }
