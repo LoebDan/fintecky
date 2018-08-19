@@ -30,6 +30,7 @@ import { QuicktopupPage} from "../pages/quicktopup/quicktopup";
 import { ViewnotificationsPage} from "../pages/viewnotifications/viewnotifications";
 import { RidesProvider } from '../providers/rides/rides';
 import {ChartDataProvider} from "../providers/chartdata/charts";
+import {MerchantproductsPage} from "../pages/merchantproducts/merchantproducts";
 
 
 @NgModule({
@@ -50,6 +51,7 @@ import {ChartDataProvider} from "../providers/chartdata/charts";
     JoinapartyPage,
     QuicktopupPage,
     ViewnotificationsPage,
+    MerchantproductsPage
 
   ],
   imports: [
@@ -90,6 +92,7 @@ import {ChartDataProvider} from "../providers/chartdata/charts";
     JoinapartyPage,
     QuicktopupPage,
     ViewnotificationsPage,
+    MerchantproductsPage
   ],
   providers: [
     StatusBar,
