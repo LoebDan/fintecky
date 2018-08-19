@@ -140,7 +140,7 @@ export class ChartDataProvider {
   fetchMonthData() {
     return this .lineChartMonthData;
   }
-  fetchMonthLabels() {
+  fetchMonthLabels() : Promise<any> {
     return this.lineChartMonthLabels;
   }
 
