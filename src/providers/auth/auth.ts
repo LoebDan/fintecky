@@ -38,6 +38,35 @@ export class AuthProvider {
       .then( () => {
         this.setSignUpDetails(email).then(() =>{
           this.events.publish('user:signup', true);
+          firebase.database().ref('/Clients').once('value', async snapshot => {
+           let snappy = snapshot.val();
+             let people = [];
+             for ( const ob of Object.keys(snapshot.val())) {
+              people.push(snappy[ob].key);
+             }
+             let bool = true
+             const userId: string = firebase.auth().currentUser.uid;
+            people.forEach(element => {
+             
+              if (element == userId) {
+                bool = false
+              }
+            });
+            if (bool) {
+              let jsonData =  {
+                "balance" : 1000,
+                "name" : "NA",
+                "transactions" : {
+                 
+                },
+                "uid" : userId
+              };
+              firebase.database().ref(`/Clients/${userId}`).set(jsonData);
+
+            }
+             
+           } );
+
         })
       })
       .catch(error => {
