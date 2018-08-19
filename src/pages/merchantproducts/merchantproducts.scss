@@ -1,0 +1,62 @@
+page-dashboard {
+
+  card #map{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .transparent-card {
+    background-color: transparent;
+    border: 1.5px solid #e8c355;
+    color : #ffa100;
+  }
+
+  .card {
+    border-radius: 10px;
+    border: 1.5px solid #e8c355;
+    background: linear-gradient(#343434, #222);
+    color : #ffa100;
+  }
+
+  .back {
+    background: linear-gradient(#343434, #222);
+    color: #e8c355;
+  }
+
+  .headings {
+    color: #e8c355;
+  }
+
+  //table
+  .table {
+    .col {
+      padding-top: 0;
+      padding-bottom: 0;
+      margin-top: 0;
+      margin-bottom: 0;
+      border-bottom: 1px solid #C0C0C0;
+
+    }
+    .vp-row {
+      padding-top: 0;
+      padding-bottom: 0;
+      margin-top: 0;
+      margin-bottom: 0;
+      text-align: left ;
+      border-bottom:  black;
+      border: 0px;
+    }
+    .h8{
+      font-size: 1rem;
+    }
+  }
+
+
+
+
+
+
+}

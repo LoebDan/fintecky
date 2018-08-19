@@ -1,3 +1,4 @@
+<script src="../../../../../media/simone/BB94-33C5/app/app.component.ts"></script>
 <ion-split-pane>
   <!-- logged in menu -->
   <ion-menu overflow-scroll="false" id="loggedInMenu" *ngIf="showMenu" [content]="content">
@@ -19,6 +20,21 @@
           <p style="padding-bottom: 30px"></p>
         </ion-row>
       </div>
+      <button ion-item detail-none class="menu-row" (click)="toggleDriver()">
+        <h2>Merchants</h2>
+        <ion-icon color="gold" item-right [name]="isDriverShown ? 'arrow-dropdown' : 'arrow-dropright'"></ion-icon>
+      </button>
+      <ion-list *ngIf="isDriverShown">
+
+        <ion-item menuClose *ngFor="let p of driverpages" text-wrap class="drop" (click)="openPage(p.component)">
+
+
+          <h4>
+            {{p.title}}
+          </h4>
+          <ion-icon color="gold" item-right [name]=p.icon></ion-icon>
+        </ion-item>
+      </ion-list>
       <ion-list >
 
         <ion-item class="menu-row" menuClose (click)="openPage(DashboardPage)">

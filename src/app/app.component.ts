@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController, Events, MenuController, Nav, Platform } from 'ionic-angular';
+import {  Events, MenuController, Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import firebase from 'firebase';
@@ -22,6 +22,7 @@ export class MyApp {
   public showMenu: any;
   public notCount;
   CurUser;
+  merchant = [];
 
   loggedOutPages: Array<{ title: string, name: string, component: any,  icon: string }>;
   driverpages: Array<{ title: string, name: string, component: any,  icon: string }>;
@@ -35,8 +36,7 @@ export class MyApp {
     statusBar: StatusBar,
     splashScreen: SplashScreen,
     public menu: MenuController,
-    public events: Events,
-    public navCtrl: NavController
+    public events: Events
   ) {
 
     firebase.initializeApp({
@@ -47,6 +47,16 @@ export class MyApp {
       storageBucket: 'tester-f1264.appspot.com',
       messagingSenderId: '1086749179711'
     });
+    firebase.database().ref('/Merchants').once('value', async snapshot => {
+        let mech = snapshot.val();
+        this.merchant = [];
+        for ( const ob of Object.keys(snapshot.val())) {
+          this.merchant.push(mech[ob]);
+          console.log(ob);
+        }
+        console.log(snapshot.val());
+      }
+    );
     this.rootPage = 'LoginPage';
     this.showMenu = false;
 
@@ -160,13 +170,13 @@ export class MyApp {
   }
 
   loadDCMProducts() {
-    this.navCtrl.push(DashboardPage, {
+    this.nav.push(DashboardPage, {
       data: "DCM"
     });
   }
 
   loadJeffsProducts() {
-    this.navCtrl.push(DashboardPage, {
+    this.nav.push(DashboardPage, {
       data: "Jeff's Place"
     });
   }
