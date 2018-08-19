@@ -1,7 +1,8 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
 import firebase from 'firebase';
-import {AuthProvider} from "../../providers/auth/auth";
+import { AuthProvider } from '../../providers/auth/auth';
+import { Component, ElementRef, ViewChild } from '@angular/core';
+import { NavController, NavParams } from 'ionic-angular';
+
 
 /**
  * Generated class for the DashboardPage page.
@@ -94,16 +95,39 @@ export class DashboardPage {
   delay(ms: number) {
     return new Promise( resolve => setTimeout(resolve, ms) );
   }
-
+  createTransaction(product) {
+    let ref = firebase.database().ref(`/Transactions`);
+    let productID = product.id
+    let date = (new Date).getTime();
+    let json ={
+      "clientID" : this.myUID,
+      "complete" : false,
+      "id" : "aa",
+      "merchantID" : product.merchant,
+      "time" : date,
+      "value" : product.price,
+      "products" : {
+        [productID]: {
+          "id" : product.id
+        }
+      }
+    };
+    ref.push(json ).once('value', async snapshot => {
+      let key = snapshot.key
+      firebase.database().ref(`/Transactions/${key}/id`).set(key);
+    });
+   }
   placeOrder(product) {
     console.log(product);
-
+    this.createTransaction(product);
     firebase.database().ref(`/Clients/${this.myUID}/balance`).once('value', async snapshot => {
       let temp = snapshot.val();
       temp -= product.price;
       firebase.database().ref(`/Clients/${this.myUID}/balance`).set(temp);
     });
   }
+
+  
 
   getSpecials() {
     firebase.database().ref('/Products').orderByChild('special').equalTo('T').once('value', async snapshot => {
