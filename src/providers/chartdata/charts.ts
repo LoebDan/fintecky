@@ -95,7 +95,7 @@ export class ChartDataProvider {
 
           for (const ob of Transactions) {
             //console.log(ob.id);
-            firebase.database().ref(`/Transactions`).orderByChild('id').equalTo(ob.toString()).once('value', snap => {
+            firebase.database().ref(`/Transactions`).orderByChild('id').equalTo(ob.toString()).on('value', snap => {
               console.log(snap.val());
               let SingularTransaction = snap.val();
               for (const ob2 of Object.keys(SingularTransaction)) {
