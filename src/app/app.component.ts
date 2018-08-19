@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import firebase from 'firebase';
 import { AuthProvider } from '../providers/auth/auth';
 import {DashboardPage} from "../pages/dashboard/dashboard";
+import {MerchantproductsPage} from "../pages/merchantproducts/merchantproducts";
 // import {HomePage} from "../pages/home/home";
 
 
@@ -169,9 +170,9 @@ export class MyApp {
     this.nav.setRoot(page);
   }
 
-  loadDCMProducts() {
-    this.nav.push(DashboardPage, {
-      data: "DCM"
+  loaddr(merch) {
+    this.nav.push(MerchantproductsPage, {
+      data: merch
     });
   }
 

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { MerchantproductsPage } from './mechantproducts';
+import { MerchantproductsPage } from './merchantproducts';
 
 @NgModule({
   declarations: [
